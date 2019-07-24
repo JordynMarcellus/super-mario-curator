@@ -2,7 +2,14 @@
   "name": "super-mario-curator-front-end",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/react": "^8.0.5",
+    "babel-plugin-emotion": "^10.0.14"
+  },
   "dependencies": {
+    "@emotion/core": "^10.0.14",
+    "@emotion/styled": "^10.0.14",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
