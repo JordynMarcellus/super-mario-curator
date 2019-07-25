@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Heading, 
+  Grommet,
+} from 'grommet'
+import {RoutesContainer} from './containers/RoutesContainer'
+import {Header} from './components/Header/'
+import {theme} from './styles/theme'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet theme={theme}>
+      <Header>
+        <Heading level='3' margin='none'>Mario Maker curator</Heading>
+      </Header>
+      <RoutesContainer />
+    </Grommet>
   );
 }
 

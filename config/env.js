@@ -32,6 +32,7 @@ var dotenvFiles = [
 // https://github.com/motdotla/dotenv-expand
 dotenvFiles.forEach(dotenvFile => {
   if (fs.existsSync(dotenvFile)) {
+    console.log(dotenvFile)
     require('dotenv-expand')(
       require('dotenv').config({
         path: dotenvFile,
@@ -65,6 +66,7 @@ function getClientEnvironment(publicUrl) {
     .filter(key => REACT_APP.test(key))
     .reduce(
       (env, key) => {
+        console.log(env, key)
         env[key] = process.env[key];
         return env;
       },
