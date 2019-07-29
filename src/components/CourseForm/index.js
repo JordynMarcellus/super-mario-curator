@@ -4,7 +4,6 @@ import { FirebaseContext } from "../Firebase";
 import {validateCourseId} from '../../utils/validators/validateCourseId'
 
 const addCourseToFirestore = (db, {courseId, makerId, courseName}) => {
-    console.log("hey")
     db.collection("courses").doc(courseId).set({
         courseId, 
         makerId,
