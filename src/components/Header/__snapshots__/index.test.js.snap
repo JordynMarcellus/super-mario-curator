@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component tests renders a component with arbitrary children 1`] = `
+<header
+  class="StyledBox-sc-13pk1d4-0 crKXlR"
+  style="z-index: 1;"
+>
+  <h1>
+    Hi! I'm the header's child.
+  </h1>
+</header>
+`;
