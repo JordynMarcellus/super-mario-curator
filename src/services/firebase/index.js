@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -9,4 +10,7 @@ const config = {
     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,  
 }
-export const firebaseService = firebase.initializeApp(config)
+const firebaseService = firebase.initializeApp(config)
+const firestoreDB = firebase.firestore()
+
+export {firebaseService, firestoreDB} 
