@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, memo} from 'react'
 import {Router, Link} from '@reach/router'
+import {Layout} from '../../components/Layout'
 import { LoginForm } from '../../components/LoginForm' 
 import {FirebaseContext} from '../../components/Firebase'
 import {HomeContainer} from '../HomeContainer'

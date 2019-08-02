@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {Box, Button, Form, FormField, Grommet, TextInput} from 'grommet'
+
 import { FirebaseContext } from "../Firebase";
 
 export const authInWithFirebase = async (firebase, {username, password}) => {
     try {
         const response = await firebase.auth().createUserWithEmailAndPassword(username, password)
-        console.log(response)
         return response
     } catch (e) {
         console.log(e)
@@ -57,7 +57,7 @@ export const LoginForm = (props) => {
                                 type="password"
                             />
                         </FormField>
-                        <Button label="Sign up now" type="submit" />
+                        <Button  label="Sign up now" type="submit" />
                     </Form>                    
                 )}}
             </FirebaseContext.Consumer>
