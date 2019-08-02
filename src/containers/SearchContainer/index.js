@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react"
-import {Box, Button, Collapsible, Heading} from 'grommet'
+import {Box, Button, Collapsible, Heading, Text} from 'grommet'
 import {CourseForm} from '../../components/CourseForm'
 import {FirebaseContext} from '../../components/Firebase'
 
@@ -18,13 +18,12 @@ export const SearchContainer = (props) => {
     return (
         <>
             <Heading level="1">Random courses:</Heading>
-
             {courses.map(({courseName, makerId, courseId}) => (
                <div key={courseId}>
                    <ul>
-                        <li>{courseName}</li>
-                        <li>{courseId}</li>
-                        <li>{makerId}</li>
+                        <Text as="li">{courseName}</Text>
+                        <Text as="li">{courseId}</Text>
+                        <Text as="li">{makerId}</Text>
                     </ul>
                 </div>
             ))}

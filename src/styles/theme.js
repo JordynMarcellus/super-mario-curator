@@ -3,6 +3,9 @@ export const theme = {
         colors: {
             brand:"#FBCE00"
         },
+        anchor:{
+          color: "dark",
+        },
       font: {
         family: 'Open Sans, Arial',
         size: '14px',
