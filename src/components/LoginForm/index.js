@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box, Button, Form, FormField, Grommet, TextInput } from "grommet";
+import { Box, Button, Form, FormField, TextInput } from "grommet";
 
 import { FirebaseContext } from "../Firebase";
 
@@ -18,14 +18,15 @@ export const LoginForm = props => {
   const [userObject, setUserObject] = useState({
     username: "",
     password: "",
+    makerId: "",
   });
-  const { firebase } = useContext(FirebaseContext);
+  const { firebaseService } = useContext(FirebaseContext);
   return (
     <Box align="center">
       <Form
         onSubmit={e => {
           e.preventDefault();
-          authInWithFirebase(firebase.firebaseService, userObject);
+          authInWithFirebase(firebaseService, userObject);
         }}>
         <FormField label="Username" htmlFor="login-username-input">
           <TextInput
@@ -39,7 +40,7 @@ export const LoginForm = props => {
             value={userObject.username}
           />
         </FormField>
-        <FormField label="password" htmlFor="login-password-input">
+        <FormField label="Password" htmlFor="login-password-input">
           <TextInput
             autocomplete="on"
             id="login-password-input"
@@ -48,6 +49,17 @@ export const LoginForm = props => {
             }
             value={userObject.password}
             type="password"
+          />
+        </FormField>
+        <FormField label="Maker ID" htmlFor="maker-id-input">
+          <TextInput
+            autocomplete="on"
+            id="maker-id-input"
+            onChange={e =>
+              setUserObject({ ...userObject, makerId: e.target.value })
+            }
+            value={userObject.makerId}
+            type="text"
           />
         </FormField>
         <Button label="Sign up now" type="submit" />

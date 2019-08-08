@@ -1,13 +1,5 @@
 import React, { memo } from "react";
-import {
-  Grommet,
-  grommet,
-  Table,
-  TableHeader,
-  TableRow,
-  TableCell,
-  TableBody,
-} from "grommet";
+import { Table, TableHeader, TableRow, TableCell, TableBody } from "grommet";
 
 export const SearchTable = memo(({ courses }) => (
   <Table size="full">
