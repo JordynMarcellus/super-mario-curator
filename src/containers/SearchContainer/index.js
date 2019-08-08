@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Grommet, grommet, Box, Button, Collapsible, Heading } from "grommet";
+import { Box, Button, Collapsible, Heading, Layer } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { CourseForm } from "../../components/CourseForm";
 import { SearchTable } from "../../components/SearchTable";
@@ -22,24 +22,26 @@ export const SearchContainer = props => {
       })
       .catch(e => console.error(e));
   }, [firestoreDB]);
-
+  const toggleCourseAddForm = () => setIsAddingNewCourse(!isAddingNewCourse);
   return (
-    <Grommet theme={grommet}>
-      <Box>
-        <Heading level="2">Random courses:</Heading>
+    <Box pad="small">
+      <Heading level="2">Random courses:</Heading>
+      <Box margin="medium">
         {isLoading ? <div>loading...</div> : <SearchTable courses={courses} />}
-        <Button
-          icon={<FormAdd />}
-          reverse
-          label="Add new course"
-          onClick={() => setIsAddingNewCourse(!isAddingNewCourse)}
-        />
-        <Collapsible open={isAddingNewCourse}>
-          <Box>
+      </Box>
+      <Button
+        icon={<FormAdd />}
+        reverse
+        label="Add new course"
+        onClick={toggleCourseAddForm}
+      />
+      {isAddingNewCourse && (
+        <Layer onEsc={toggleCourseAddForm} onClickOutside={toggleCourseAddForm}>
+          <Box pad="large">
             <CourseForm />
           </Box>
-        </Collapsible>
-      </Box>
-    </Grommet>
+        </Layer>
+      )}
+    </Box>
   );
 };
