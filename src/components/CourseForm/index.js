@@ -16,13 +16,36 @@ import {
 import { FirebaseContext } from "../Firebase";
 import { validateCourseId } from "../../utils/validators/validateCourseId";
 
-const addCourseToFirestore = (db, { courseId, makerId, courseName }) => {
-  db.collection("courses")
+const optionsObject = {
+  style: Object.keys(courseStyleMap).map(key => ({
+    label: courseStyleMap[key],
+    value: key,
+  })),
+  tags: Object.keys(courseTags).map(key => ({
+    label: courseTags[key],
+    value: key,
+  })),
+  themes: Object.keys(courseThemes).map(key => ({
+    label: courseThemes[key],
+    value: key,
+  })),
+};
+
+const addCourseToFirestore = (
+  { firestoreDB, firebaseService },
+  { courseId, makerId, courseName, style, tags, themes }
+) => {
+  firestoreDB
+    .collection("courses")
     .doc(courseId)
     .set({
       courseId,
       makerId,
       courseName,
+      style,
+      tags,
+      themes,
+      addedBy: firebaseService.auth().currentUser,
     })
     .then(() => {
       // document successfully submitted
@@ -36,11 +59,12 @@ export const CourseForm = props => {
   const [makerId, setMakerId] = useState("");
   const [courseName, setCourseName] = useState("");
   const [metaData, setMetaData] = useState({
-    styles: [],
+    style: "",
     tags: [],
     themes: [],
   });
-  const { firestoreDB } = useContext(FirebaseContext);
+  const { firestoreDB, firebaseService } = useContext(FirebaseContext);
+  console.log(firebaseService.auth().currentUser);
   return (
     <Grommet>
       <Box>
@@ -48,11 +72,17 @@ export const CourseForm = props => {
           onSubmit={e => {
             e.preventDefault();
             return validateCourseId(courseId)
-              ? addCourseToFirestore(firestoreDB, {
-                  courseId,
-                  makerId,
-                  courseName,
-                })
+              ? addCourseToFirestore(
+                  { firestoreDB, firebaseService },
+                  {
+                    courseId,
+                    makerId,
+                    courseName,
+                    style: metaData.style,
+                    tags: metaData.tags,
+                    themes: metaData.themes,
+                  }
+                )
               : console.error("oh no it didn't work");
           }}>
           <FormField
@@ -86,49 +116,25 @@ export const CourseForm = props => {
               type="text"
             />
           </FormField>
-          <Select
-            id="styles--select"
-            name="styles--select"
-            placeholder="Choose a style"
-            value={metaData.styles}
-            labelKey="label"
-            valueKey="value"
-            onChange={({ option }) => {
-              console.log(value);
-              setMetaData({
-                ...metaData,
-                styles: [...metaData.styles, value],
-              });
-            }}
-            options={Object.keys(courseStyleMap).map(key => ({
-              label: courseStyleMap[key],
-              value: key,
-            }))}
-          />
-          <Select
-            id="themes--select"
-            name="themes--select"
-            placeholder="Choose a style"
-            value={metaData.themes}
-            labelKey="label"
-            valueKey="value"
-            options={Object.keys(courseThemes).map(key => ({
-              label: courseThemes[key],
-              value: key,
-            }))}
-          />
-          <Select
-            id="tags--select"
-            name="tags--select"
-            placeholder="Choose a tag"
-            value={metaData.tags}
-            labelKey="label"
-            valueKey="value"
-            options={Object.keys(courseTags).map(key => ({
-              label: courseTags[key],
-              value: key,
-            }))}
-          />
+          {Object.keys(metaData).map(metaDataKey => (
+            <Select
+              key={metaDataKey}
+              id={`${metaDataKey}--select`}
+              name={`${metaDataKey}--select`}
+              placeholder={`Choose ${metaDataKey}`}
+              value={metaData[metaDataKey]}
+              labelKey="label"
+              valueKey="value"
+              margin="small"
+              onChange={({ option }) => {
+                setMetaData({
+                  ...metaData,
+                  [metaDataKey]: option,
+                });
+              }}
+              options={optionsObject[metaDataKey]}
+            />
+          ))}
           <Button type="submit" label="Add Course!" />
         </Form>
       </Box>
