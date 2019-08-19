@@ -45,7 +45,6 @@ const addCourseToFirestore = (
       style,
       tags,
       themes,
-      addedBy: firebaseService.auth().currentUser,
     })
     .then(() => {
       // document successfully submitted
@@ -64,7 +63,6 @@ export const CourseForm = props => {
     themes: [],
   });
   const { firestoreDB, firebaseService } = useContext(FirebaseContext);
-  console.log(firebaseService.auth().currentUser);
   return (
     <Grommet>
       <Box>

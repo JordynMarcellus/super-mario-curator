@@ -1,13 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {FirebaseProvider} from './components/Firebase'
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { FirebaseProvider } from "./components/Firebase";
+import { AuthenticationProvider } from "./components/Authentication";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-    <FirebaseProvider>
-        <App />
-    </FirebaseProvider>, document.getElementById('root')
+  <FirebaseProvider>
+    <AuthenticationProvider>
+      <App />
+    </AuthenticationProvider>
+  </FirebaseProvider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

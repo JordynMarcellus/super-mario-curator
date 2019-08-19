@@ -1,21 +1,6 @@
 {
   "done": [],
-  "in-progress": [],
-  "testing": [],
-  "todo": [
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
-      "creation_time": "2019-07-29T21:06:05.727Z",
-      "description": {
-        "content": "Shd be so easy to test this myself XD",
-        "mime": "text/markdown"
-      },
-      "id": "3",
-      "references": [],
-      "title": "\"One hand phone\" test"
-    },
+  "in-progress": [
     {
       "assignedTo": {
         "name": "Jordyn Marcellus"
@@ -33,19 +18,6 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-07-29T23:18:54.544Z",
-      "description": {
-        "content": "Standard\nPuzzle-solving\nSpeedrun\nAutoscroll\nAuto-Mario\nShort and sweet\nMultiplayer Versus\nThemed\nMusic",
-        "mime": "text/markdown"
-      },
-      "id": "6",
-      "references": [],
-      "title": "Course tags"
-    },
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
       "creation_time": "2019-07-29T23:14:23.551Z",
       "description": {
         "content": "Ground\nSky\nUnderground\nForest\nUnderwater\nGhost house\nDesert\nAirship\nSnow\nCastle",
@@ -54,6 +26,35 @@
       "id": "4",
       "references": [],
       "title": "Course themes"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2019-07-29T23:18:54.544Z",
+      "description": {
+        "content": "Standard\nPuzzle-solving\nSpeedrun\nAutoscroll\nAuto-Mario\nShort and sweet\nMultiplayer Versus\nThemed\nMusic",
+        "mime": "text/markdown"
+      },
+      "id": "6",
+      "references": [],
+      "title": "Course tags"
+    }
+  ],
+  "testing": [],
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2019-07-29T21:06:05.727Z",
+      "description": {
+        "content": "Shd be so easy to test this myself XD",
+        "mime": "text/markdown"
+      },
+      "id": "3",
+      "references": [],
+      "title": "\"One hand phone\" test"
     },
     {
       "assignedTo": {
