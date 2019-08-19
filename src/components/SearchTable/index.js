@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { Link } from "react-router-dom";
 import { Table, TableHeader, TableRow, TableCell, TableBody } from "grommet";
 
 export const SearchTable = memo(({ courses }) => (
@@ -13,7 +14,9 @@ export const SearchTable = memo(({ courses }) => (
     <TableBody>
       {courses.map(({ courseName, makerId, courseId }) => (
         <TableRow key={courseId}>
-          <TableCell>{courseName}</TableCell>
+          <TableCell>
+            <Link to={`/courses/${courseId}`}>{courseName}</Link>
+          </TableCell>
           <TableCell>{courseId}</TableCell>
           <TableCell>{makerId}</TableCell>
         </TableRow>

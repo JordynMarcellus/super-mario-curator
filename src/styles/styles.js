@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Link } from "@reach/router";
+import { Link } from "react-router-dom";
 
 export const StyledLink = styled(Link)`
   font-size: 20px;

@@ -85,6 +85,10 @@ export const CourseForm = props => {
           value={makerId}
           onChange={setMakerId}
           required
+          inputProps={{
+            maxLength: "11",
+            minLength: "11",
+          }}
         />
         {Object.keys(metaData).map(metaDataKey => (
           <Select
