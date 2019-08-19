@@ -23,6 +23,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
+    "debounce": "^1.2.0",
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
     "eslint": "^5.16.0",
@@ -98,7 +99,10 @@
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect", "@testing-library/react/cleanup-after-each"],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect",
+      "@testing-library/react/cleanup-after-each"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
