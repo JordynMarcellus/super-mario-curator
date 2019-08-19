@@ -6,6 +6,11 @@ export const courseStyleMap = {
   sm3w: "Super Mario 3D World",
 };
 
+export const courseStyleOptionsArray = Object.keys(courseStyleMap).map(key => ({
+  label: courseStyleMap[key],
+  value: key,
+}));
+
 export const courseThemes = {
   ground: "Ground",
   sky: "Sky",
@@ -19,6 +24,11 @@ export const courseThemes = {
   castle: "Castle",
 };
 
+export const courseThemesOptionsArray = Object.keys(courseThemes).map(key => ({
+  label: courseThemes[key],
+  value: key,
+}));
+
 export const courseTags = {
   standard: "Standard",
   puzzleSolving: "Puzzle-solving",
@@ -30,3 +40,8 @@ export const courseTags = {
   themed: "Themed",
   music: "Music",
 };
+
+export const courseTagsOptionsArray = Object.keys(courseTags).map(key => ({
+  label: courseTags[key],
+  value: key,
+}));
