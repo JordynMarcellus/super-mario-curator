@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Box, Button, Form, FormField, Select, TextInput } from "grommet";
-import * as courseInformation from "../../utils/constants/maps";
 import { FirebaseContext } from "../Firebase";
+import { FormTextInput } from "../FormTextInput";
+import * as courseInformation from "../../utils/constants/maps";
 import { validateCourseId } from "../../utils/validators/validateCourseId";
 
 const optionsObject = {
@@ -11,7 +12,7 @@ const optionsObject = {
 };
 
 const addCourseToFirestore = (
-  { firestoreDB, firebaseService },
+  firestoreDB,
   { courseId, makerId, courseName, style, tags, themes }
 ) => {
   firestoreDB
@@ -41,57 +42,50 @@ export const CourseForm = props => {
     tags: [],
     themes: [],
   });
-  const { firestoreDB, firebaseService } = useContext(FirebaseContext);
+  const { firestoreDB } = useContext(FirebaseContext);
   return (
     <Box>
       <Form
         onSubmit={e => {
           e.preventDefault();
-          return validateCourseId(courseId)
-            ? addCourseToFirestore(
-                { firestoreDB, firebaseService },
-                {
-                  courseId,
-                  makerId,
-                  courseName,
-                  style: metaData.style,
-                  tags: metaData.tags,
-                  themes: metaData.themes,
-                }
-              )
-            : console.error("oh no it didn't work");
+          if (validateCourseId(courseId)) {
+            addCourseToFirestore(firestoreDB, {
+              courseId,
+              makerId,
+              courseName,
+              style: metaData.style,
+              tags: metaData.tags,
+              themes: metaData.themes,
+            });
+            return props.onSubmitSuccess();
+          }
+          console.error("oh no it didn't work");
         }}>
-        <FormField
+        <FormTextInput
           label="Course ID (add dashes)"
-          htmlFor="courseId-input-pt-one">
-          <TextInput
-            id="courseId-input"
-            value={courseId}
-            maxLength="11"
-            minLength="11"
-            onChange={e => setCourseId(e.target.value)}
-            required
-            type="text"
-          />
-        </FormField>
-        <FormField label="Course name" htmlFor="courseName-input">
-          <TextInput
-            id="courseName-input"
-            value={courseName}
-            onChange={e => setCourseName(e.target.value)}
-            required
-            type="text"
-          />
-        </FormField>
-        <FormField label="Maker ID" htmlFor="makerId-input">
-          <TextInput
-            id="makerId-input"
-            value={makerId}
-            onChange={e => setMakerId(e.target.value)}
-            required
-            type="text"
-          />
-        </FormField>
+          id="courseId-input"
+          value={courseId}
+          onChange={setCourseId}
+          required
+          inputProps={{
+            maxLength: "11",
+            minLength: "11",
+          }}
+        />
+        <FormTextInput
+          label="Course name"
+          id="courseName-input"
+          value={courseName}
+          onChange={setCourseName}
+          required
+        />
+        <FormTextInput
+          label="Maker ID"
+          id="makerId-input"
+          value={makerId}
+          onChange={setMakerId}
+          required
+        />
         {Object.keys(metaData).map(metaDataKey => (
           <Select
             key={metaDataKey}

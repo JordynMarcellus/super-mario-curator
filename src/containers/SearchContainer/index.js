@@ -38,7 +38,7 @@ export const SearchContainer = props => {
       {isAddingNewCourse && (
         <Layer onEsc={toggleCourseAddForm} onClickOutside={toggleCourseAddForm}>
           <Box pad="large">
-            <CourseForm />
+            <CourseForm onSubmitSuccess={toggleCourseAddForm} />
           </Box>
         </Layer>
       )}
