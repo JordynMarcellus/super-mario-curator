@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Button, Heading, Layer } from "grommet";
+import { Box, Button, Heading } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { CourseForm } from "../../components/CourseForm";
 import { SearchTable } from "../../components/SearchTable";
+import { ToggleForm } from "../../components/ToggleForm";
 import { FirebaseContext } from "../../components/Firebase";
 
 export const SearchContainer = props => {
@@ -36,11 +37,9 @@ export const SearchContainer = props => {
         onClick={toggleCourseAddForm}
       />
       {isAddingNewCourse && (
-        <Layer onEsc={toggleCourseAddForm} onClickOutside={toggleCourseAddForm}>
-          <Box pad="large">
-            <CourseForm onSubmitSuccess={toggleCourseAddForm} />
-          </Box>
-        </Layer>
+        <ToggleForm toggleVisibility={toggleCourseAddForm}>
+          <CourseForm onSubmitSuccess={toggleCourseAddForm} />
+        </ToggleForm>
       )}
     </Box>
   );

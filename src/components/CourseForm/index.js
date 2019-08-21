@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Box, Button, Form, FormField, Select, TextInput } from "grommet";
+import { Box, Button, Form, Select } from "grommet";
 import { FirebaseContext } from "../Firebase";
 import { FormTextInput } from "../FormTextInput";
 import * as courseInformation from "../../utils/constants/maps";
