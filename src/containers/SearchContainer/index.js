@@ -38,7 +38,10 @@ export const SearchContainer = props => {
       />
       {isAddingNewCourse && (
         <ToggleForm toggleVisibility={toggleCourseAddForm}>
-          <CourseForm onSubmitSuccess={toggleCourseAddForm} />
+          <CourseForm
+            headline="Add new course"
+            onSubmitSuccess={toggleCourseAddForm}
+          />
         </ToggleForm>
       )}
     </Box>

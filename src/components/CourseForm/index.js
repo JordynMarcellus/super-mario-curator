@@ -3,7 +3,7 @@ import { Box, Button, Form, Select } from "grommet";
 import { FirebaseContext } from "../Firebase";
 import { FormTextInput } from "../FormTextInput";
 import * as courseInformation from "../../utils/constants/maps";
-import { validateCourseId } from "../../utils/validators/validateCourseId";
+import { courseIdValidationRegex } from "../../utils/validators/validateCourseId";
 
 const optionsObject = {
   style: courseInformation.courseStyleOptionsArray,
@@ -48,18 +48,15 @@ export const CourseForm = props => {
       <Form
         onSubmit={e => {
           e.preventDefault();
-          if (validateCourseId(courseId)) {
-            addCourseToFirestore(firestoreDB, {
-              courseId,
-              makerId,
-              courseName,
-              style: metaData.style,
-              tags: metaData.tags,
-              themes: metaData.themes,
-            });
-            return props.onSubmitSuccess();
-          }
-          console.error("oh no it didn't work");
+          addCourseToFirestore(firestoreDB, {
+            courseId,
+            makerId,
+            courseName,
+            style: metaData.style,
+            tags: metaData.tags,
+            themes: metaData.themes,
+          });
+          return props.onSubmitSuccess();
         }}>
         <FormTextInput
           label="Course ID (add dashes)"
@@ -67,6 +64,10 @@ export const CourseForm = props => {
           value={courseId}
           onChange={setCourseId}
           required
+          validate={{
+            regex: courseIdValidationRegex,
+            message: "Format is XXX-XXX-XXX",
+          }}
           inputProps={{
             maxLength: "11",
             minLength: "11",
@@ -85,6 +86,10 @@ export const CourseForm = props => {
           value={makerId}
           onChange={setMakerId}
           required
+          validate={{
+            regex: courseIdValidationRegex,
+            message: "Format is XXX-XXX-XXX",
+          }}
           inputProps={{
             maxLength: "11",
             minLength: "11",

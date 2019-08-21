@@ -36,7 +36,9 @@ export const PlaylistContainer = props => {
         onClick={toggleAddPlaylistForm}
       />
       {isAddingNewPlaylist && (
-        <ToggleForm toggleVisibility={toggleAddPlaylistForm}>
+        <ToggleForm
+          headline="Add new playlist"
+          toggleVisibility={toggleAddPlaylistForm}>
           <PlaylistForm />
         </ToggleForm>
       )}

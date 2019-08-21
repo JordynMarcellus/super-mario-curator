@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Box, Button, Form, TextArea } from "grommet";
+import { Box, Button, Form, FormField, TextArea } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { FormTextInput } from "../FormTextInput";
-
+import { courseIdValidationRegex } from "../../utils/validators/validateCourseId";
 const DEFAULT_PLAYLIST_ADD_STATE = {
   name: "",
   id: "",
@@ -17,48 +17,46 @@ export const PlaylistForm = props => {
   return (
     <Box>
       <Form onSubmit={e => e.preventDefault()}>
-        <FormTextInput
-          label="Playlist name"
-          id="playlist-name"
-          value={playlistData.name}
-          onChange={e =>
-            setPlaylistData({ ...playlistData, name: e.target.value })
-          }
-          required
-        />
-        <TextArea
-          placeholder="Add a descriptional (optional)"
-          value={playlistData.description}
-          onChange={e =>
-            setPlaylistData({ ...playlistData, description: e.target.value })
-          }
-        />
-        <hr />
-        <Button
-          icon={<FormAdd />}
-          plain
-          label="Add another course"
-          onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
-        />
-        {courses.map(({ name, id }, index) => (
-          <Box key={`playlist-course--${index}`}>
-            <FormTextInput
-              label="CourseID (add dashes)"
-              id="courseId-input"
-              value={id}
-              onChange={e => console.log(e.target.value)}
-              required
-              inputProps={{ maxLength: "11", minLength: "11" }}
-            />
-            <FormTextInput
-              label="Course name"
-              id="courseName-input"
-              value={name}
-              onChange={e => console.log(e.target.value)}
-              required
-            />
-          </Box>
-        ))}
+        <Box margin={{ bottom: "large" }}>
+          <FormField
+            name="playlist-name--input"
+            label="Name"
+            id="playlist-name"
+            required
+          />
+          <FormField
+            name="playlist-description--text-area"
+            component={TextArea}
+            label="Description (optional)"
+            size="medium"
+          />
+        </Box>
+        <Box>
+          <Button
+            icon={<FormAdd />}
+            plain
+            label="Add another course"
+            onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
+          />
+          {courses.map(({ name, id }, index) => (
+            <Box key={`playlist-course--${index}`}>
+              <FormField
+                label="CourseID (add dashes)"
+                name={`courseID--${index}`}
+                required
+                validate={{
+                  regex: courseIdValidationRegex,
+                  message: "Doesn't match validation criteria",
+                }}
+              />
+              <FormField
+                label="Course name"
+                name={`courseName--${index}`}
+                required
+              />
+            </Box>
+          ))}
+        </Box>
       </Form>
     </Box>
   );

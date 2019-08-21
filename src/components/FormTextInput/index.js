@@ -3,7 +3,7 @@ import { FormField, TextInput } from "grommet";
 import debounce from "debounce";
 
 export const FormTextInput = props => (
-  <FormField label={props.label} htmlFor={props.id}>
+  <FormField label={props.label} htmlFor={props.id} validate={props.validate}>
     <TextInput
       {...props.inputProps}
       id={props.id}
@@ -17,4 +17,5 @@ export const FormTextInput = props => (
 
 FormTextInput.defaultProps = {
   required: false,
+  validate: undefined,
 };
