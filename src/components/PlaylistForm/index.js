@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Box, Form } from "grommet";
+import { Box, Button, Form } from "grommet";
+import { FormAdd } from "grommet-icons";
 import { FormTextInput } from "../FormTextInput";
 
 const DEFAULT_PLAYLIST_ADD_STATE = {
@@ -12,7 +13,7 @@ export const PlaylistForm = props => {
   return (
     <Box>
       <Form onSubmit={e => e.preventDefault()}>
-        {courses.map(({ name, id }) => (
+        {courses.map(({ name, id }, index) => (
           <>
             <FormTextInput
               label="CourseID (add dsahes)"
@@ -31,6 +32,12 @@ export const PlaylistForm = props => {
             />
           </>
         ))}
+        <Button
+          icon={<FormAdd />}
+          reverse
+          label="Add new course"
+          onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
+        />
       </Form>
     </Box>
   );

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { Layout } from "../../components/Layout";
+import { PlaylistForm } from "../../components/PlaylistForm";
 import { ToggleForm } from "../../components/ToggleForm";
 import { FirebaseContext } from "../../components/Firebase";
 
@@ -35,7 +36,9 @@ export const PlaylistContainer = props => {
         onClick={toggleAddPlaylistForm}
       />
       {isAddingNewPlaylist && (
-        <ToggleForm toggleVisibility={toggleAddPlaylistForm}>"hi"</ToggleForm>
+        <ToggleForm toggleVisibility={toggleAddPlaylistForm}>
+          <PlaylistForm />
+        </ToggleForm>
       )}
     </Layout>
   );
