@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { Box, Button, Form, FormField, TextArea } from "grommet";
 import { FormAdd } from "grommet-icons";
-import { FormTextInput } from "../FormTextInput";
 import { courseIdValidationRegex } from "../../utils/validators/validateCourseId";
 const DEFAULT_PLAYLIST_ADD_STATE = {
   name: "",
   id: "",
 };
+// will need to use responsiveContext from Grommet here to modify layout variables!
+// responsive grid will be a good ex here https://storybook.grommet.io/?path=/story/responsivecontext--responsive-grid
 
 export const PlaylistForm = props => {
   const [courses, setCourses] = useState([DEFAULT_PLAYLIST_ADD_STATE]);
-  const [playlistData, setPlaylistData] = useState({
-    name: "",
-    description: "",
-  });
   return (
-    <Box>
-      <Form onSubmit={e => e.preventDefault()}>
+    <Box overflow="auto">
+      <Form
+        onSubmit={event => {
+          const { value } = event;
+          event.preventDefault();
+          console.log(value);
+        }}>
         <Box margin={{ bottom: "large" }}>
           <FormField
             name="playlist-name--input"
@@ -31,31 +33,39 @@ export const PlaylistForm = props => {
             size="medium"
           />
         </Box>
-        <Box>
-          <Button
-            icon={<FormAdd />}
-            plain
-            label="Add another course"
-            onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
-          />
-          {courses.map(({ name, id }, index) => (
-            <Box key={`playlist-course--${index}`}>
-              <FormField
-                label="CourseID (add dashes)"
-                name={`courseID--${index}`}
-                required
-                validate={{
-                  regex: courseIdValidationRegex,
-                  message: "Doesn't match validation criteria",
-                }}
-              />
-              <FormField
-                label="Course name"
-                name={`courseName--${index}`}
-                required
-              />
+        <Box overflow="auto">
+          {courses.map((representation, index) => (
+            <Box direction="row" key={`playlist-course--${index}`}>
+              <Box margin={{ right: "small" }}>
+                <FormField
+                  label="CourseID (add dashes)"
+                  name={`courseID--${index}`}
+                  required
+                  maxLength="11"
+                  minLength="11"
+                  validate={{
+                    regex: courseIdValidationRegex,
+                    message: "Doesn't match validation criteria",
+                  }}
+                />
+              </Box>
+              <Box>
+                <FormField
+                  label="Course name"
+                  name={`courseName--${index}`}
+                  required
+                />
+              </Box>
             </Box>
           ))}
+        </Box>
+        <Box direction="row" flex="grow" justify="between" pad="small">
+          <Button
+            icon={<FormAdd />}
+            label="Add course"
+            onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
+          />
+          <Button label="Add another course" type="submit" />
         </Box>
       </Form>
     </Box>
