@@ -10,24 +10,25 @@ const AuthorizationProvider = ({ children }) => {
 
   const { firebaseService } = useContext(FirebaseContext);
   const signOut = () => {
-    firebaseService.auth().signOut()
-  }
+    firebaseService.auth().signOut();
+  };
   const signIn = (email, password) => {
-    firebaseService.auth().signInWithEmailAndPassword(email, password)
-  }
-  
+    firebaseService.auth().signInWithEmailAndPassword(email, password);
+  };
+
   // use auth, create user in user collection
-  const signUp = (email, password, makerId, ) => {
+  const signUp = (email, password, makerId) => {
     firebaseService.auth().createUserWithEmailAndPassword(email, password);
-  }
+  };
 
   useEffect(() => {
     const unsubscribeFromFirebaseObservable = firebaseService
       .auth()
       .onAuthStateChanged(user => {
         if (user) {
+          const { email, displayName, uid } = user;
           setUser({
-            userInfo: { email: user.email, displayName: user.displayName },
+            userInfo: { email, displayName, uid },
             isLoggedIn: true,
           });
           return false;
@@ -44,7 +45,7 @@ const AuthorizationProvider = ({ children }) => {
         user,
         signOut,
         signIn,
-        signUp
+        signUp,
       }}>
       {children}
     </AuthorizationContext.Provider>

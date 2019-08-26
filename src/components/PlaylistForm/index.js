@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import { Box, Button, Form, FormField, TextArea } from "grommet";
+import { Box, Button, Form, FormField, TextArea, TextInput } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { courseIdValidationRegex } from "../../utils/validators/validateCourseId";
 const DEFAULT_PLAYLIST_ADD_STATE = {
   name: "",
   id: "",
 };
+
 // will need to use responsiveContext from Grommet here to modify layout variables!
 // responsive grid will be a good ex here https://storybook.grommet.io/?path=/story/responsivecontext--responsive-grid
 
+const setCoursesAtIndex = (event, index, arrayToCopy = [], callback) => {
+  const immutableCourseArray = [...arrayToCopy];
+  immutableCourseArray[index] = {
+    ...immutableCourseArray[index],
+    [event.target.name]: event.target.value,
+  };
+  callback(immutableCourseArray);
+};
+
 export const PlaylistForm = props => {
   const [courses, setCourses] = useState([DEFAULT_PLAYLIST_ADD_STATE]);
+
   return (
     <Box overflow="auto">
       <Form
         onSubmit={event => {
-          const { value } = event;
+          const { value: playlistData } = event;
           event.preventDefault();
-          console.log(value);
+          props.submitFormData({ playlistData, courses });
         }}>
         <Box margin={{ bottom: "large" }}>
           <FormField
@@ -34,27 +45,34 @@ export const PlaylistForm = props => {
           />
         </Box>
         <Box overflow="auto">
-          {courses.map((representation, index) => (
+          {courses.map((course, index) => (
             <Box direction="row" key={`playlist-course--${index}`}>
               <Box margin={{ right: "small" }}>
-                <FormField
-                  label="CourseID (add dashes)"
-                  name={`courseID--${index}`}
-                  required
-                  maxLength="11"
-                  minLength="11"
-                  validate={{
-                    regex: courseIdValidationRegex,
-                    message: "Doesn't match validation criteria",
-                  }}
-                />
+                <FormField label="CourseID (add dashes)">
+                  <TextInput
+                    label="CourseID (add dashes)"
+                    required
+                    name="id"
+                    maxLength="11"
+                    minLength="11"
+                    onChange={event =>
+                      setCoursesAtIndex(event, index, courses, setCourses)
+                    }
+                    value={course.id}
+                  />
+                </FormField>
               </Box>
               <Box>
-                <FormField
-                  label="Course name"
-                  name={`courseName--${index}`}
-                  required
-                />
+                <FormField label="Course name">
+                  <TextInput
+                    name="name"
+                    required
+                    onChange={event =>
+                      setCoursesAtIndex(event, index, courses, setCourses)
+                    }
+                    value={course.name}
+                  />
+                </FormField>
               </Box>
             </Box>
           ))}
@@ -65,7 +83,7 @@ export const PlaylistForm = props => {
             label="Add course"
             onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
           />
-          <Button label="Add another course" type="submit" />
+          <Button primary label="Submit playlist" type="submit" />
         </Box>
       </Form>
     </Box>
