@@ -13,17 +13,19 @@ export const PlaylistContainer = props => {
   const [isLoading, setLoadingState] = useState(true);
   const [isAddingNewPlaylist, setIsAddingNewPlaylist] = useState(false);
 
-  const onFormSubmit = formData => {
-    const { playlistName, playlistDescription } = formData;
-    const dataTransformationObject = {
-      playlistName,
-      playlistDescription,
-      coursesToAdd: [],
-    };
-    for (let key in formData) {
-      console.log(formData[key]);
-    }
-    // firestoreDB.collection("playlists").
+  const onFormSubmit = async formData => {
+    const { uid, displayName } = user.userInfo;
+    const { playlistData, courses } = formData;
+    console.log(uid, playlistData, courses);
+
+    firestoreDB.collection("playlists").add({
+      playlistData,
+      courses,
+      addedBy: {
+        uid,
+        displayName,
+      },
+    });
   };
 
   const toggleAddPlaylistForm = () =>

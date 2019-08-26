@@ -32,13 +32,13 @@ export const PlaylistForm = props => {
         }}>
         <Box margin={{ bottom: "large" }}>
           <FormField
-            name="playlist-name--input"
+            name="playlistName"
             label="Name"
             id="playlist-name"
             required
           />
           <FormField
-            name="playlist-description--text-area"
+            name="playlistDescription"
             component={TextArea}
             label="Description (optional)"
             size="medium"
