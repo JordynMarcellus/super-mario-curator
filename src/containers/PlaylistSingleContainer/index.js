@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Box, Heading, Paragraph } from "grommet";
 import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
+import { PlaylistSinglePage } from "../../components/PlaylistSinglePage";
 
 export const PlaylistSingleContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
@@ -27,14 +28,11 @@ export const PlaylistSingleContainer = props => {
       <Box>
         {isLoading && <div>Loading...</div>}
         {playlistInfo && (
-          <>
-            <Heading level="2">
-              {playlistInfo.playlistData.playlistName}
-            </Heading>
-            <Paragraph>
-              {playlistInfo.playlistData.playlistDescription}
-            </Paragraph>
-          </>
+          <PlaylistSinglePage
+            playlistName={playlistInfo.playlistData.playlistName}
+            playlistDescription={playlistInfo.playlistData.playlistDescription}
+            playlistCourses={playlistInfo.courses}
+          />
         )}
       </Box>
     </Layout>
