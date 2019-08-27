@@ -6,6 +6,8 @@ import { SearchTable } from "../../components/SearchTable";
 import { ToggleForm } from "../../components/ToggleForm";
 import { FirebaseContext } from "../../components/Firebase";
 
+const TABLE_HEADERS = ["Course name", "CourseId", "MakerId"];
+
 export const SearchContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const [courses, setCourses] = useState([]);
@@ -28,7 +30,11 @@ export const SearchContainer = props => {
     <Box pad="small">
       <Heading level="2">Random courses:</Heading>
       <Box margin="medium">
-        {isLoading ? <div>loading...</div> : <SearchTable courses={courses} />}
+        {isLoading ? (
+          <div>loading...</div>
+        ) : (
+          <SearchTable courses={courses} headers={TABLE_HEADERS} />
+        )}
       </Box>
       <Button
         icon={<FormAdd />}
