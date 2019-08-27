@@ -6,7 +6,7 @@ export const SearchTable = memo(({ cells, headers }) => (
   <Table size="full">
     <TableHeader>
       <TableRow>
-        {/* Since we won't sort/filter based on these, we can get away with indices as key */}
+        {/* Since we won't sort/filter based on thes -- yet -- we can get away with indices as key */}
         {headers.map((headerCell, index) => (
           <TableCell key={index} scope="col">
             {headerCell}

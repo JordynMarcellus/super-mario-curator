@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Heading, Paragraph, Text } from "grommet";
+import { Box, Button, Heading, Paragraph, Text } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { Layout } from "../../components/Layout";
 import { PlaylistForm } from "../../components/PlaylistForm";
-import { ToggleForm } from "../../components/ToggleForm";
-import { FirebaseContext } from "../../components/Firebase";
+import { PlaylistCard } from "../../components/PlaylistCard";
 import { AuthenticationContext } from "../../components/Authentication";
+import { FirebaseContext } from "../../components/Firebase";
+import { ToggleForm } from "../../components/ToggleForm";
+
 export const PlaylistContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const { user } = useContext(AuthenticationContext);
@@ -48,19 +50,17 @@ export const PlaylistContainer = props => {
 
   return (
     <Layout>
-      {isLoading && <div>Loading...</div>}
-      {playlists.length !== 0 &&
-        playlists.map(playlist => (
-          <div key={playlist.uid}>
-            <Heading level="2">{playlist.playlistData.playlistName}</Heading>
-            <Paragraph>{playlist.playlistData.playlistDescription}</Paragraph>
-            <Text>Total courses: {playlist.courses.length}</Text>
-          </div>
-        ))}
+      <Box justify="center" margin={{ vertical: "medium" }}>
+        {isLoading && <div>Loading...</div>}
+        {playlists.length !== 0 &&
+          playlists.map(playlistItem => (
+            <PlaylistCard playlist={playlistItem} />
+          ))}
+      </Box>
       <Button
         icon={<FormAdd />}
         reverse
-        label="Add new course"
+        label="Add new playlist"
         onClick={toggleAddPlaylistForm}
       />
       {isAddingNewPlaylist && (
