@@ -22,7 +22,7 @@ export const Layout = memo(({ children }) => {
           <StyledLink to="/login">Login</StyledLink>
         )}
       </Header>
-      {children}
+      <Box pad={{ vertical: "large", horizontal: "xlarge" }}>{children}</Box>
     </Box>
   );
 });

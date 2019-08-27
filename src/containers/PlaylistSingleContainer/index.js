@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Heading, Paragraph } from "grommet";
+import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
+
 export const PlaylistSingleContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const [isLoading, setLoadingState] = useState(true);
@@ -21,14 +23,20 @@ export const PlaylistSingleContainer = props => {
       .catch(e => console.error(e));
   }, [playlistId, firestoreDB]);
   return (
-    <Box>
-      {isLoading && <div>Loading...</div>}
-      {playlistInfo && (
-        <>
-          <Heading level="2">{playlistInfo.playlistData.playlistName}</Heading>
-          <Paragraph>{playlistInfo.playlistData.playlistDescription}</Paragraph>
-        </>
-      )}
-    </Box>
+    <Layout>
+      <Box>
+        {isLoading && <div>Loading...</div>}
+        {playlistInfo && (
+          <>
+            <Heading level="2">
+              {playlistInfo.playlistData.playlistName}
+            </Heading>
+            <Paragraph>
+              {playlistInfo.playlistData.playlistDescription}
+            </Paragraph>
+          </>
+        )}
+      </Box>
+    </Layout>
   );
 };
