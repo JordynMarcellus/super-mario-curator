@@ -50,7 +50,7 @@ export const PlaylistContainer = props => {
 
   return (
     <Layout>
-      <Box justify="center" margin={{ vertical: "medium" }}>
+      <Box margin={{ vertical: "medium" }}>
         {isLoading && <div>Loading...</div>}
         {playlists.length !== 0 &&
           playlists.map(playlistItem => (
