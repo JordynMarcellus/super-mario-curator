@@ -2,6 +2,7 @@ import React, { memo, useContext, useEffect, useState } from "react";
 import { Box, Heading, Text } from "grommet";
 import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
+import { CourseNotFoundContainer } from "../../containers/CourseNotFoundContainer";
 
 export const CourseContainer = memo(props => {
   const { firestoreDB } = useContext(FirebaseContext);
@@ -28,7 +29,7 @@ export const CourseContainer = memo(props => {
         </Heading>
         {isLoading && <div>Loading...</div>}
         {courseInfo === null && isLoading === false && (
-          <div> Hmmm, we don't have record of that... </div>
+          <CourseNotFoundContainer courseId={props.match.params.courseId} />
         )}
         {courseInfo !== null && !isLoading && (
           <Box as="ul">
