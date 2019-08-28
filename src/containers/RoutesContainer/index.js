@@ -14,8 +14,8 @@ export const RoutesContainer = memo(props => (
     <Switch>
       <Route exact path="/" component={HomeContainer} />
       <Route path="/sign-in" component={SignInContainer} />
-      <Route path="/sign-up" component={SignUpContainer} />
       <Route path="/sign-out" component={SignOutContainer} />
+      <Route path="/sign-up" component={SignUpContainer} />
       <Route exact path="/courses" component={HomeContainer} />
       <Route path="/courses/:courseId" component={CourseContainer} />
       <Route exact path="/playlists" component={PlaylistContainer} />
