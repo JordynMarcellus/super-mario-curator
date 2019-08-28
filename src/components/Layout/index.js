@@ -17,9 +17,9 @@ export const Layout = memo(({ children }) => {
         <NavLink to="/playlists">Playlists</NavLink>
         <NavLink to="/user">Your info</NavLink>
         {isLoggedIn ? (
-          <StyledLink to="/signout">Sign-out</StyledLink>
+          <StyledLink to="/sign-out">Sign-out</StyledLink>
         ) : (
-          <StyledLink to="/login">Login</StyledLink>
+          <StyledLink to="/sign-in">Sign-in</StyledLink>
         )}
       </Header>
       <Box pad={{ vertical: "large", horizontal: "xlarge" }}>{children}</Box>

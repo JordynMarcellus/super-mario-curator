@@ -1,28 +1,25 @@
 import React, { useContext, useState } from "react";
 import { Box, Button, Form, FormField, TextInput } from "grommet";
 
-import { FirebaseContext } from "../Firebase";
-
 export const SignUpForm = props => {
   const [userObject, setUserObject] = useState({
-    username: "",
+    email: "",
     password: "",
     makerId: "",
   });
-  const { firebaseService } = useContext(FirebaseContext);
   return (
     <Box align="center">
       <Form
         onSubmit={e => {
           e.preventDefault();
-          props.onSubmit(firebaseService, userObject);
+          props.onSubmit(userObject);
         }}>
         <FormField label="Username" htmlFor="login-username-input">
           <TextInput
             autocomplete="on"
             id="login-username-input"
             onChange={e =>
-              setUserObject({ ...userObject, username: e.target.value })
+              setUserObject({ ...userObject, email: e.target.value })
             }
             placeholder="gooigi@protonmail.com"
             type="email"

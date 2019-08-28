@@ -8,9 +8,7 @@ export const SignOutContainer = props => {
   const { signOut, user } = useContext(AuthenticationContext);
 
   useEffect(() => {
-    signOut().then(() => {
-      console.log("signed out...?");
-    });
+    signOut();
   }, [signOut]);
   return user.isLoggedIn ? <Box>Signing you out...</Box> : <Redirect to="/" />;
 };

@@ -13,12 +13,13 @@ const AuthorizationProvider = ({ children }) => {
     await firebaseService.auth().signOut();
   };
 
-  const signIn = async (email, password) => {
+  const signIn = async ({ email, password }) => {
     await firebaseService.auth().signInWithEmailAndPassword(email, password);
   };
 
   // use auth, create user in user collection
-  const signUp = (email, password, makerId) => {
+  const signUp = ({ email, password, makerId }) => {
+    //TODO: add user accounts on successful creation, associate with displayName and MakerId
     firebaseService.auth().createUserWithEmailAndPassword(email, password);
   };
 
@@ -26,6 +27,7 @@ const AuthorizationProvider = ({ children }) => {
     const unsubscribeFromFirebaseObservable = firebaseService
       .auth()
       .onAuthStateChanged(user => {
+        console.log(user);
         if (user) {
           const { email, displayName, uid } = user;
           setUser({
