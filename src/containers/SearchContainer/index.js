@@ -6,7 +6,7 @@ import { CourseForm } from "../../components/CourseForm";
 import { SearchTable } from "../../components/SearchTable";
 import { ToggleForm } from "../../components/ToggleForm";
 import { FirebaseContext } from "../../components/Firebase";
-
+import { AddCourseContainer } from "../../containers/AddCourseContainer";
 const TABLE_HEADERS = ["Course name", "CourseId", "MakerId"];
 
 const buildCourseTableCells = courses => {
@@ -25,7 +25,6 @@ export const SearchContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const [courses, setCourses] = useState([]);
   const [isLoading, setLoadingState] = useState(true);
-  const [isAddingNewCourse, setIsAddingNewCourse] = useState(false);
   useEffect(() => {
     firestoreDB
       .collection("courses")
@@ -37,7 +36,7 @@ export const SearchContainer = props => {
       })
       .catch(e => console.error(e));
   }, [firestoreDB]);
-  const toggleCourseAddForm = () => setIsAddingNewCourse(!isAddingNewCourse);
+
   return (
     <Box pad="small">
       <Heading level="2">Random courses:</Heading>
@@ -51,20 +50,7 @@ export const SearchContainer = props => {
           />
         )}
       </Box>
-      <Button
-        icon={<FormAdd />}
-        reverse
-        label="Add new course"
-        onClick={toggleCourseAddForm}
-      />
-      {isAddingNewCourse && (
-        <ToggleForm toggleVisibility={toggleCourseAddForm}>
-          <CourseForm
-            headline="Add new course"
-            onSubmitSuccess={toggleCourseAddForm}
-          />
-        </ToggleForm>
-      )}
+      <AddCourseContainer />
     </Box>
   );
 };
