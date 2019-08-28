@@ -40,19 +40,25 @@ export const SignUpForm = props => {
             type="password"
           />
         </FormField>
-        <FormField label="Maker ID" htmlFor="maker-id-input">
-          <TextInput
-            autocomplete="on"
-            id="maker-id-input"
-            onChange={e =>
-              setUserObject({ ...userObject, makerId: e.target.value })
-            }
-            value={userObject.makerId}
-            type="text"
-          />
-        </FormField>
+        {props.withMakerId && (
+          <FormField label="Maker ID" htmlFor="maker-id-input">
+            <TextInput
+              autocomplete="on"
+              id="maker-id-input"
+              onChange={e =>
+                setUserObject({ ...userObject, makerId: e.target.value })
+              }
+              value={userObject.makerId}
+              type="text"
+            />
+          </FormField>
+        )}
         <Button label="Sign up now" type="submit" />
       </Form>
     </Box>
   );
+};
+
+SignUpForm.defaultProps = {
+  withMakerId: true,
 };
