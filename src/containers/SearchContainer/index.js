@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Button, Heading, TableCell, TableRow } from "grommet";
-import { FormAdd } from "grommet-icons";
+import { Box, Heading, TableCell, TableRow } from "grommet";
 import { Link } from "react-router-dom";
-import { CourseForm } from "../../components/CourseForm";
 import { SearchTable } from "../../components/SearchTable";
-import { ToggleForm } from "../../components/ToggleForm";
 import { FirebaseContext } from "../../components/Firebase";
 import { AddCourseContainer } from "../../containers/AddCourseContainer";
 const TABLE_HEADERS = ["Course name", "CourseId", "MakerId"];

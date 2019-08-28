@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Form, FormField, TextArea, TextInput } from "grommet";
 import { FormAdd } from "grommet-icons";
-import { courseIdValidationRegex } from "../../utils/validators/validateCourseId";
 const DEFAULT_PLAYLIST_ADD_STATE = {
   name: "",
   id: "",

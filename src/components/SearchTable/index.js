@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { Link } from "react-router-dom";
 import { Table, TableHeader, TableRow, TableCell, TableBody } from "grommet";
 
 export const SearchTable = memo(({ cells, headers }) => (

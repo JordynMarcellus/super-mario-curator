@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Heading, Paragraph } from "grommet";
+import { Box } from "grommet";
 import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
 import { PlaylistSinglePage } from "../../components/PlaylistSinglePage";
