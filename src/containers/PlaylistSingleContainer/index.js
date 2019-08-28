@@ -17,7 +17,6 @@ export const PlaylistSingleContainer = props => {
       .get()
       .then(docSnap => {
         const playlistData = docSnap.exists ? docSnap.data() : null;
-        console.log(playlistData);
         setPlaylistInfo(playlistData);
         setLoadingState(false);
       })
