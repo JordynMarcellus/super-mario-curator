@@ -14,7 +14,7 @@ export const authInWithFirebase = async (firebase, { username, password }) => {
   }
 };
 
-export const LoginForm = props => {
+export const SignUpForm = props => {
   const [userObject, setUserObject] = useState({
     username: "",
     password: "",

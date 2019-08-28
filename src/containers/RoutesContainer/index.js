@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { LoginForm } from "../../components/LoginForm";
+import { SignUpForm } from "../../components/SignUpForm";
 import { CourseContainer } from "../CourseContainer";
 import { HomeContainer } from "../HomeContainer";
 import { PlaylistContainer } from "../PlaylistContainer";
@@ -12,7 +12,7 @@ export const RoutesContainer = memo(props => (
   <Router>
     <Switch>
       <Route exact path="/" component={HomeContainer} />
-      <Route path="/login" component={LoginForm} />
+      <Route path="/login" component={SignUpForm} />
       <Route path="/signout" component={SignOutContainer} />
       <Route exact path="/courses" component={HomeContainer} />
       <Route path="/courses/:courseId" component={CourseContainer} />
