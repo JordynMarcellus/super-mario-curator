@@ -4,6 +4,20 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
+      "creation_time": "2019-08-26T17:38:38.747Z",
+      "description": {
+        "content": "- Form (Y)\n- Submit to Firebase (check)\n- Will add a createdBy with the firebaes UID ",
+        "mime": "text/markdown"
+      },
+      "id": "7",
+      "prio": 2,
+      "references": [],
+      "title": "CREATE playlists"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
       "creation_time": "2019-07-29T23:15:07.554Z",
       "description": {
         "content": "Super Mario Bros.\nSuper Mario Bros. 3\nSuper Mario World\nNew Super Mario Bros. U\nSuper Mario 3D World",
@@ -38,24 +52,19 @@
       "id": "4",
       "references": [],
       "title": "Course themes"
-    }
-  ],
-  "in-progress": [
+    },
     {
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-08-26T17:38:38.747Z",
-      "description": {
-        "content": "- Form (Y)\n- Submit to Firebase (check)\n- Will add a createdBy with the firebaes UID ",
-        "mime": "text/markdown"
-      },
-      "id": "7",
-      "prio": 2,
+      "creation_time": "2019-08-26T17:39:18.653Z",
+      "id": "8",
+      "prio": 1,
       "references": [],
-      "title": "CREATE playlists"
+      "title": "READ playlists"
     }
   ],
+  "in-progress": [],
   "testing": [],
   "todo": [
     {
@@ -71,16 +80,6 @@
       "prio": 1,
       "references": [],
       "title": "DELETE playlists"
-    },
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
-      "creation_time": "2019-08-26T17:39:18.653Z",
-      "id": "8",
-      "prio": 1,
-      "references": [],
-      "title": "READ playlists"
     },
     {
       "assignedTo": {
