@@ -3,17 +3,6 @@ import { Box, Button, Form, FormField, TextInput } from "grommet";
 
 import { FirebaseContext } from "../Firebase";
 
-export const authInWithFirebase = async (firebase, { username, password }) => {
-  try {
-    const response = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(username, password);
-    return response;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 export const SignUpForm = props => {
   const [userObject, setUserObject] = useState({
     username: "",
@@ -26,7 +15,7 @@ export const SignUpForm = props => {
       <Form
         onSubmit={e => {
           e.preventDefault();
-          authInWithFirebase(firebaseService, userObject);
+          props.onSubmit(firebaseService, userObject);
         }}>
         <FormField label="Username" htmlFor="login-username-input">
           <TextInput
