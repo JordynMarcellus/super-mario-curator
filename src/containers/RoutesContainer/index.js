@@ -5,6 +5,7 @@ import { CourseContainer } from "../CourseContainer";
 import { HomeContainer } from "../HomeContainer";
 import { PlaylistContainer } from "../PlaylistContainer";
 import { PlaylistSingleContainer } from "../PlaylistSingleContainer";
+import { SignOutContainer } from "../SignOutContainer";
 import { NotFound } from "../../components/NotFound";
 
 export const RoutesContainer = memo(props => (
@@ -12,6 +13,7 @@ export const RoutesContainer = memo(props => (
     <Switch>
       <Route exact path="/" component={HomeContainer} />
       <Route path="/login" component={LoginForm} />
+      <Route path="/signout" component={SignOutContainer} />
       <Route exact path="/courses" component={HomeContainer} />
       <Route path="/courses/:courseId" component={CourseContainer} />
       <Route exact path="/playlists" component={PlaylistContainer} />

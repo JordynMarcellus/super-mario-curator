@@ -17,7 +17,7 @@ export const Layout = memo(({ children }) => {
         <NavLink to="/playlists">Playlists</NavLink>
         <NavLink to="/user">Your info</NavLink>
         {isLoggedIn ? (
-          <StyledLink to="/login">Sign-out</StyledLink>
+          <StyledLink to="/signout">Sign-out</StyledLink>
         ) : (
           <StyledLink to="/login">Login</StyledLink>
         )}

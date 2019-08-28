@@ -9,11 +9,12 @@ const AuthorizationProvider = ({ children }) => {
   });
 
   const { firebaseService } = useContext(FirebaseContext);
-  const signOut = () => {
-    firebaseService.auth().signOut();
+  const signOut = async () => {
+    await firebaseService.auth().signOut();
   };
-  const signIn = (email, password) => {
-    firebaseService.auth().signInWithEmailAndPassword(email, password);
+
+  const signIn = async (email, password) => {
+    await firebaseService.auth().signInWithEmailAndPassword(email, password);
   };
 
   // use auth, create user in user collection
