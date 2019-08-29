@@ -5,7 +5,6 @@ import { StyledNavLink, StyledLink } from "../../styles/styles";
 
 export const Header = props => {
   const { user } = useContext(AuthenticationContext);
-  const [isNavOpen, setNavOpenState] = useState(false);
   const { isLoggedIn, userInfo } = user;
   return (
     <Box
@@ -20,7 +19,7 @@ export const Header = props => {
       style={{ zIndex: "1" }}>
       <Box tag="nav" direction="row" align="center">
         <Box direction="row" justify="between" width="100%">
-          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledLink to="/">Home</StyledLink>
           <StyledNavLink to="/courses">Courses</StyledNavLink>
           <StyledNavLink to="/playlists">Playlists</StyledNavLink>
           {isLoggedIn ? (
