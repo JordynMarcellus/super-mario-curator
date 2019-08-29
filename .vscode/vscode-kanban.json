@@ -93,11 +93,15 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-08-29T17:01:37.870Z",
-      "id": "17",
-      "prio": 4,
+      "creation_time": "2019-07-29T21:00:54.543Z",
+      "description": {
+        "content": "- Ability to add in makerIDs && displayName for user accounts...\n- Make changes to sign-up form and update in user profile page...",
+        "mime": "text/markdown"
+      },
+      "id": "2",
+      "prio": 3,
       "references": [],
-      "title": "`addedBy` for playlists"
+      "title": "CREATE user 3.0"
     }
   ],
   "testing": [],
@@ -197,19 +201,6 @@
       "id": "1",
       "references": [],
       "title": "TODO: '/maker/{makerID}/course/{courseID}"
-    },
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
-      "creation_time": "2019-07-29T21:00:54.543Z",
-      "description": {
-        "content": "User accounts are the secret sauce here tbh.",
-        "mime": "text/markdown"
-      },
-      "id": "2",
-      "references": [],
-      "title": "TODO: MakerIDs for user accounts"
     }
   ]
 }
