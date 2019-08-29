@@ -4,6 +4,16 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
+      "creation_time": "2019-08-28T19:19:33.094Z",
+      "id": "11",
+      "prio": 3,
+      "references": [],
+      "title": "CREATE user 2.0"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
       "creation_time": "2019-08-26T17:38:38.747Z",
       "description": {
         "content": "- Form (Y)\n- Submit to Firebase (check)\n- Will add a createdBy with the firebaes UID ",
@@ -69,11 +79,11 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-08-28T19:19:33.094Z",
-      "id": "11",
-      "prio": 3,
+      "creation_time": "2019-08-28T19:19:44.674Z",
+      "id": "12",
+      "prio": 2,
       "references": [],
-      "title": "CREATE user 2.0"
+      "title": "READ user"
     }
   ],
   "testing": [],
@@ -91,16 +101,6 @@
       "prio": 2,
       "references": [],
       "title": "DELETE user"
-    },
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
-      "creation_time": "2019-08-28T19:19:44.674Z",
-      "id": "12",
-      "prio": 2,
-      "references": [],
-      "title": "READ user"
     },
     {
       "assignedTo": {

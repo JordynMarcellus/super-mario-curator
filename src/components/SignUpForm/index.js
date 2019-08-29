@@ -50,7 +50,7 @@ export const SignUpForm = props => {
             />
           </FormField>
         )}
-        <Button label="Sign up now" type="submit" />
+        <Button label="Sign in" type="submit" />
       </Form>
     </Box>
   );

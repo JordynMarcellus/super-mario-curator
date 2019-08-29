@@ -5,7 +5,8 @@ import { StyledNavLink, StyledLink } from "../../styles/styles";
 
 export const Header = props => {
   const { user } = useContext(AuthenticationContext);
-  const { isLoggedIn } = user;
+
+  const { isLoggedIn, userInfo } = user;
   return (
     <Box
       tag="header"
@@ -23,7 +24,9 @@ export const Header = props => {
         <StyledNavLink to="/playlists">Playlists</StyledNavLink>
         {isLoggedIn ? (
           <>
-            <StyledNavLink to={`/user/${user.uid}`}>Your info</StyledNavLink>
+            <StyledNavLink to={`/user/${userInfo.uid}`}>
+              Your info
+            </StyledNavLink>
             <StyledLink to="/sign-out">Sign-out</StyledLink>
           </>
         ) : (

@@ -31,6 +31,7 @@ const AuthorizationProvider = ({ children }) => {
       console.error(e);
     }
   };
+
   // use auth, create user in user collection
   const signUp = ({ email, password, makerId }) => {
     //TODO: add user accounts on successful creation, associate with displayName and MakerId
