@@ -9,9 +9,6 @@ export const Header = props => {
   return (
     <Box
       tag="header"
-      direction="row"
-      align="center"
-      justify="between"
       background="brand"
       pad={{
         left: "medium",
@@ -20,15 +17,19 @@ export const Header = props => {
       }}
       elevation="medium"
       style={{ zIndex: "1" }}>
-      <StyledLink to="/">Super Mario curator</StyledLink>
-      <StyledNavLink to="/courses">Courses</StyledNavLink>
-      <StyledNavLink to="/playlists">Playlists</StyledNavLink>
-      <StyledNavLink to="/user">Your info</StyledNavLink>
-      {isLoggedIn ? (
-        <StyledLink to="/sign-out">Sign-out</StyledLink>
-      ) : (
-        <StyledLink to="/sign-in">Sign-in</StyledLink>
-      )}
+      <Box tag="nav" direction="row" align="center">
+        <StyledLink to="/">Super Mario curator</StyledLink>
+        <StyledNavLink to="/courses">Courses</StyledNavLink>
+        <StyledNavLink to="/playlists">Playlists</StyledNavLink>
+        {isLoggedIn ? (
+          <>
+            <StyledNavLink to={`/user/${user.uid}`}>Your info</StyledNavLink>
+            <StyledLink to="/sign-out">Sign-out</StyledLink>
+          </>
+        ) : (
+          <StyledLink to="/sign-in">Sign-in</StyledLink>
+        )}
+      </Box>
     </Box>
   );
 };

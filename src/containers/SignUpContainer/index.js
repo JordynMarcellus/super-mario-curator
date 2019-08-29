@@ -4,10 +4,10 @@ import { SignUpForm } from "../../components/SignUpForm";
 import { AuthenticationContext } from "../../components/Authentication";
 
 export const SignUpContainer = props => {
-  const { signIn } = useContext(AuthenticationContext);
+  const { signUp } = useContext(AuthenticationContext);
   return (
     <Box>
-      <SignUpForm onSubmit={signIn} />
+      <SignUpForm onSubmit={signUp} />
     </Box>
   );
 };

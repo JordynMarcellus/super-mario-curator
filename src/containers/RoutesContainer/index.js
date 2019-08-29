@@ -7,6 +7,7 @@ import { PlaylistSingleContainer } from "../PlaylistSingleContainer";
 import { SignInContainer } from "../SignInContainer";
 import { SignOutContainer } from "../SignOutContainer";
 import { SignUpContainer } from "../SignUpContainer";
+import { UserContainer } from "../UserContainer";
 import { NotFound } from "../../components/NotFound";
 
 export const RoutesContainer = memo(props => (
@@ -23,6 +24,7 @@ export const RoutesContainer = memo(props => (
         path="/playlists/:playlistId"
         component={PlaylistSingleContainer}
       />
+      <Route path="/user/:userId" component={UserContainer} />
       <Route component={NotFound} />
     </Switch>
   </Router>

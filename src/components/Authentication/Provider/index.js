@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../../Firebase";
 import AuthorizationContext from "../Context";
+import { firestoreDB } from "../../../services/firebase";
 
 const AuthorizationProvider = ({ children }) => {
   const [user, setUser] = useState({
@@ -8,7 +9,7 @@ const AuthorizationProvider = ({ children }) => {
     isLoggedIn: false,
   });
 
-  const { firebaseService } = useContext(FirebaseContext);
+  const { firebaseService, fireStore } = useContext(FirebaseContext);
   const signOut = async () => {
     await firebaseService.auth().signOut();
   };
@@ -16,18 +17,34 @@ const AuthorizationProvider = ({ children }) => {
   const signIn = async ({ email, password }) => {
     await firebaseService.auth().signInWithEmailAndPassword(email, password);
   };
-
+  const addUserToFirestore = async docReference => {
+    try {
+      const userDbRef = await firestoreDB
+        .collection("users")
+        .doc(docReference.user.uid)
+        .set({
+          playlists: [],
+          courses: [],
+        });
+      console.log(userDbRef);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   // use auth, create user in user collection
   const signUp = ({ email, password, makerId }) => {
     //TODO: add user accounts on successful creation, associate with displayName and MakerId
-    firebaseService.auth().createUserWithEmailAndPassword(email, password);
+    firebaseService
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(addUserToFirestore)
+      .catch(e => console.error(e));
   };
 
   useEffect(() => {
     const unsubscribeFromFirebaseObservable = firebaseService
       .auth()
       .onAuthStateChanged(user => {
-        console.log(user);
         if (user) {
           const { email, displayName, uid } = user;
           setUser({
