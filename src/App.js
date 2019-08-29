@@ -6,7 +6,7 @@ import { theme } from "./styles/theme";
 function App() {
   return (
     <Grommet theme={theme}>
-      <Box>
+      <Box height="100vh">
         <RoutesContainer />
       </Box>
     </Grommet>

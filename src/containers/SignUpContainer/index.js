@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { Box } from "grommet";
+import { Layout } from "../../components/Layout";
 import { SignUpForm } from "../../components/SignUpForm";
 import { AuthenticationContext } from "../../components/Authentication";
 
 export const SignUpContainer = props => {
   const { signUp } = useContext(AuthenticationContext);
   return (
-    <Box>
+    <Layout justify="center" align="center" height="100%">
       <SignUpForm onSubmit={signUp} />
-    </Box>
+    </Layout>
   );
 };

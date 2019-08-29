@@ -6,10 +6,12 @@ export const SignUpForm = props => {
     email: "",
     password: "",
     makerId: "",
+    displayName: "",
   });
   return (
-    <Box align="center">
+    <Box width="medium">
       <Form
+        style={{ width: "100%" }}
         onSubmit={e => {
           e.preventDefault();
           props.onSubmit(userObject);
@@ -38,19 +40,37 @@ export const SignUpForm = props => {
           />
         </FormField>
         {props.withMakerId && (
-          <FormField label="Maker ID" htmlFor="maker-id-input">
-            <TextInput
-              autocomplete="on"
-              id="maker-id-input"
-              onChange={e =>
-                setUserObject({ ...userObject, makerId: e.target.value })
-              }
-              value={userObject.makerId}
-              type="text"
-            />
-          </FormField>
+          <>
+            <FormField label="Maker ID" htmlFor="maker-id-input">
+              <TextInput
+                autocomplete="on"
+                id="maker-id-input"
+                onChange={e =>
+                  setUserObject({ ...userObject, makerId: e.target.value })
+                }
+                value={userObject.makerId}
+                type="text"
+              />
+            </FormField>
+            <FormField label="Display name" htmlFor="display-name-input">
+              <TextInput
+                id="display-name-input"
+                onChange={e =>
+                  setUserObject({
+                    ...userObject,
+                    displayName: e.target.value,
+                  })
+                }
+                value={userObject.displayName}
+                type="text"
+              />
+            </FormField>
+          </>
         )}
-        <Button label="Sign in" type="submit" />
+        <Button
+          label={`${props.withMakerId ? "Sign up" : "Sign in"}`}
+          type="submit"
+        />
       </Form>
     </Box>
   );
