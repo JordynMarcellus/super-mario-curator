@@ -7,8 +7,7 @@ export const PlaylistCard = props => (
     pad="medium"
     elevation="small"
     width="large"
-    margin={{ vertical: "0", horizontal: "auto" }}
-    key={props.playlist.uid}>
+    margin={{ vertical: "0", horizontal: "auto" }}>
     <Heading level="2" margin={{ vertical: "small" }}>
       {props.playlist.playlistData.playlistName}
     </Heading>

@@ -26,7 +26,6 @@ const AuthorizationProvider = ({ children }) => {
           playlists: [],
           courses: [],
         });
-      console.log(userDbRef);
     } catch (e) {
       console.error(e);
     }

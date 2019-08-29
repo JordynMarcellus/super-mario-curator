@@ -54,7 +54,7 @@ export const PlaylistContainer = props => {
         {isLoading && <div>Loading...</div>}
         {playlists.length !== 0 &&
           playlists.map(playlistItem => (
-            <PlaylistCard playlist={playlistItem} />
+            <PlaylistCard key={playlistItem.uid} playlist={playlistItem} />
           ))}
       </Box>
       <Button
