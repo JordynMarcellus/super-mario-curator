@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Button } from "grommet";
+import { Box, Button, Paragraph, Text } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { Layout } from "../../components/Layout";
 import { PlaylistForm } from "../../components/PlaylistForm";
@@ -53,9 +53,27 @@ export const PlaylistContainer = props => {
       <Box margin={{ vertical: "medium" }}>
         {isLoading && <div>Loading...</div>}
         {playlists.length !== 0 &&
-          playlists.map(playlistItem => (
-            <PlaylistCard key={playlistItem.uid} playlist={playlistItem} />
-          ))}
+          playlists.map(playlistItem => {
+            console.log(playlistItem);
+            return (
+              <PlaylistCard
+                key={playlistItem.uid}
+                title={playlistItem.playlistData.playlistName}
+                description={
+                  <>
+                    <Paragraph margin={{ top: "0", bottom: "small" }}>
+                      {playlistItem.playlistData.playlistDescription}
+                    </Paragraph>
+                    <Text margin={{ bottom: "small" }}>
+                      Total courses: {playlistItem.courses.length}
+                    </Text>
+                  </>
+                }
+                linkTo={`/playlists/${playlistItem.uid}`}
+                playlist={playlistItem}
+              />
+            );
+          })}
       </Box>
       <Button
         icon={<FormAdd />}
