@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../../Firebase";
 import AuthorizationContext from "../Context";
-import { firestoreDB } from "../../../services/firebase";
 
 const AuthorizationProvider = ({ children }) => {
   const [user, setUser] = useState({
@@ -9,14 +8,8 @@ const AuthorizationProvider = ({ children }) => {
     isLoggedIn: false,
   });
 
-  const { firebaseService, fireStore } = useContext(FirebaseContext);
-  const signOut = async () => {
-    await firebaseService.auth().signOut();
-  };
+  const { firebaseService, firestoreDB } = useContext(FirebaseContext);
 
-  const signIn = async ({ email, password }) => {
-    await firebaseService.auth().signInWithEmailAndPassword(email, password);
-  };
   const addUserToFirestore = async docReference => {
     try {
       const userDbRef = await firestoreDB
@@ -29,6 +22,14 @@ const AuthorizationProvider = ({ children }) => {
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const signOut = async () => {
+    await firebaseService.auth().signOut();
+  };
+
+  const signIn = async ({ email, password }) => {
+    await firebaseService.auth().signInWithEmailAndPassword(email, password);
   };
 
   // use auth, create user in user collection
