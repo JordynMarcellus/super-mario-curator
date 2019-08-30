@@ -10,21 +10,6 @@ const AuthorizationProvider = ({ children }) => {
 
   const { firebaseService, firestoreDB } = useContext(FirebaseContext);
 
-  const addUserToFirestore = async docReference => {
-    try {
-      const userDbRef = await firestoreDB
-        .collection("users")
-        .doc(docReference.user.uid)
-        .set({
-          playlists: [],
-          courses: [],
-        });
-      return userDbRef;
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   const signOut = async () => {
     await firebaseService.auth().signOut();
   };
@@ -34,13 +19,24 @@ const AuthorizationProvider = ({ children }) => {
   };
 
   // use auth, create user in user collection
-  const signUp = ({ email, password, makerId }) => {
+  const signUp = async ({ email, password, makerId, displayName }) => {
     //TODO: add user accounts on successful creation, associate with displayName and MakerId
-    firebaseService
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(addUserToFirestore)
-      .catch(e => console.error(e));
+    try {
+      const userReference = await firebaseService
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      console.log(userReference);
+      await userReference.user.updateProfile({
+        displayName,
+      });
+
+      await firestoreDB
+        .collection("users")
+        .doc(userReference.user.uid)
+        .set({ playlists: [], courses: [], makerId });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {

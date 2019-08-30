@@ -45,6 +45,7 @@ export const SignUpForm = props => {
               <TextInput
                 autocomplete="on"
                 id="maker-id-input"
+                required
                 onChange={e =>
                   setUserObject({ ...userObject, makerId: e.target.value })
                 }
@@ -55,6 +56,7 @@ export const SignUpForm = props => {
             <FormField label="Display name" htmlFor="display-name-input">
               <TextInput
                 id="display-name-input"
+                required
                 onChange={e =>
                   setUserObject({
                     ...userObject,
