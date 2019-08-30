@@ -3,7 +3,7 @@ import { Box, Heading, TableCell, TableRow } from "grommet";
 import { Link } from "react-router-dom";
 import { SearchTable } from "../../components/SearchTable";
 import { FirebaseContext } from "../../components/Firebase";
-import { AddCourseContainer } from "../../containers/AddCourseContainer";
+import { AddCourseContainer } from "../AddCourseContainer";
 const TABLE_HEADERS = ["Course name", "CourseId", "MakerId"];
 
 const buildCourseTableCells = courses => {

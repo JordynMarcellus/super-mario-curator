@@ -25,7 +25,6 @@ const AuthorizationProvider = ({ children }) => {
       const userReference = await firebaseService
         .auth()
         .createUserWithEmailAndPassword(email, password);
-      console.log(userReference);
       await userReference.user.updateProfile({
         displayName,
       });
