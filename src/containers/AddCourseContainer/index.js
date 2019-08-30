@@ -12,7 +12,7 @@ export const AddCourseContainer = props => {
       <Button
         icon={<FormAdd />}
         reverse
-        label="Add new course"
+        label="New course"
         onClick={toggleCourseAddForm}
       />
       {isAddingNewCourse && (

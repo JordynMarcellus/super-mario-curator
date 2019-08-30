@@ -60,7 +60,7 @@ export const PlaylistContainer = props => {
       <Button
         icon={<FormAdd />}
         reverse
-        label="Add new playlist"
+        label="New playlist"
         onClick={toggleAddPlaylistForm}
       />
       {isAddingNewPlaylist && (
