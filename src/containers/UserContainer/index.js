@@ -3,8 +3,9 @@ import { Box, FormField, Heading, TextInput } from "grommet";
 import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
 import { AuthenticationContext } from "../../components/Authentication";
-import { AddCourseContainer } from "../AddCourseContainer";
 import { Spinner } from "../../components/Spinner";
+import { AddCourseContainer } from "../AddCourseContainer";
+import { AddPlaylistContainer } from "../AddPlaylistContainer";
 export const UserContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const { user } = useContext(AuthenticationContext);
@@ -53,10 +54,10 @@ export const UserContainer = props => {
           {userData.courses.map(playlist => (
             <div>Got a course!</div>
           ))}
-          {userData.playlists.length === 0 && (
-            <div>Add your first course today!</div>
-          )}
-          {userData.courses.length === 0 && <AddCourseContainer />}
+          <Box direction="row" justify="between">
+            {userData.playlists.length === 0 && <AddPlaylistContainer />}
+            {userData.courses.length === 0 && <AddCourseContainer />}
+          </Box>
         </Box>
       )}
     </Layout>

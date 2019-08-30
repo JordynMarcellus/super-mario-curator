@@ -1,40 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Button, Paragraph, Text } from "grommet";
-import { FormAdd } from "grommet-icons";
+import { Box, Paragraph, Text } from "grommet";
 import { Layout } from "../../components/Layout";
-import { PlaylistForm } from "../../components/PlaylistForm";
 import { Card } from "../../components/Card";
-import { AuthenticationContext } from "../../components/Authentication";
 import { FirebaseContext } from "../../components/Firebase";
-import { ToggleForm } from "../../components/ToggleForm";
-
+import { AddPlaylistContainer } from "../AddPlaylistContainer";
 export const PlaylistContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
-  const { user } = useContext(AuthenticationContext);
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setLoadingState] = useState(true);
-  const [isAddingNewPlaylist, setIsAddingNewPlaylist] = useState(false);
-
-  const onFormSubmit = async formData => {
-    const { uid, displayName } = user.userInfo;
-    const { playlistData, courses } = formData;
-    firestoreDB
-      .collection("playlists")
-      .add({
-        playlistData,
-        courses,
-        addedBy: {
-          uid,
-          displayName,
-        },
-      })
-      .then(firestoreRef => {
-        firestoreRef.set({ uid: firestoreRef.id }, { merge: true });
-      });
-  };
-
-  const toggleAddPlaylistForm = () =>
-    setIsAddingNewPlaylist(!isAddingNewPlaylist);
 
   useEffect(() => {
     firestoreDB
@@ -74,20 +47,8 @@ export const PlaylistContainer = props => {
               />
             );
           })}
+        <AddPlaylistContainer />
       </Box>
-      <Button
-        icon={<FormAdd />}
-        reverse
-        label="New playlist"
-        onClick={toggleAddPlaylistForm}
-      />
-      {isAddingNewPlaylist && (
-        <ToggleForm
-          headline="Add new playlist"
-          toggleVisibility={toggleAddPlaylistForm}>
-          <PlaylistForm submitFormData={onFormSubmit} />
-        </ToggleForm>
-      )}
     </Layout>
   );
 };
