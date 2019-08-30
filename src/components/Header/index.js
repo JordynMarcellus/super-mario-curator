@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Box, Button } from "grommet";
+import React, { useContext } from "react";
+import { Box } from "grommet";
 import { AuthenticationContext } from "../Authentication";
 import { StyledNavLink, StyledLink } from "../../styles/styles";
 

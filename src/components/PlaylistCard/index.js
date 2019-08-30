@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Paragraph, Text } from "grommet";
+import { Box, Heading } from "grommet";
 import { StyledLink } from "../../styles/styles";
 
 export const PlaylistCard = props => (
