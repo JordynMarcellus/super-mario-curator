@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { CourseContainer } from "../CourseContainer";
+import { CourseSingleContainer } from "../CourseSingleContainer";
 import { HomeContainer } from "../HomeContainer";
 import { PlaylistContainer } from "../PlaylistContainer";
 import { PlaylistSingleContainer } from "../PlaylistSingleContainer";
@@ -18,7 +18,7 @@ export const RoutesContainer = memo(props => (
       <Route path="/sign-out" component={SignOutContainer} />
       <Route path="/sign-up" component={SignUpContainer} />
       <Route exact path="/courses" component={HomeContainer} />
-      <Route path="/courses/:courseId" component={CourseContainer} />
+      <Route path="/courses/:courseId" component={CourseSingleContainer} />
       <Route exact path="/playlists" component={PlaylistContainer} />
       <Route
         path="/playlists/:playlistId"

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Heading } from "grommet";
 import { StyledLink } from "../../styles/styles";
 
-export const PlaylistCard = props => (
+export const Card = props => (
   <Box
     pad="medium"
     elevation="small"

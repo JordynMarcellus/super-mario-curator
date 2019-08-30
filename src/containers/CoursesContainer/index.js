@@ -18,7 +18,7 @@ const buildCourseTableCells = courses => {
   ));
 };
 
-export const SearchContainer = props => {
+export const CoursesContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const [courses, setCourses] = useState([]);
   const [isLoading, setLoadingState] = useState(true);

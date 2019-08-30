@@ -3,7 +3,7 @@ import { Box, Button, Paragraph, Text } from "grommet";
 import { FormAdd } from "grommet-icons";
 import { Layout } from "../../components/Layout";
 import { PlaylistForm } from "../../components/PlaylistForm";
-import { PlaylistCard } from "../../components/PlaylistCard";
+import { Card } from "../../components/Card";
 import { AuthenticationContext } from "../../components/Authentication";
 import { FirebaseContext } from "../../components/Firebase";
 import { ToggleForm } from "../../components/ToggleForm";
@@ -56,7 +56,7 @@ export const PlaylistContainer = props => {
           playlists.map(playlistItem => {
             console.log(playlistItem);
             return (
-              <PlaylistCard
+              <Card
                 key={playlistItem.uid}
                 title={playlistItem.playlistData.playlistName}
                 description={

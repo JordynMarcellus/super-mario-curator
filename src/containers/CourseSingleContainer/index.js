@@ -4,7 +4,7 @@ import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
 import { CourseNotFoundContainer } from "../../containers/CourseNotFoundContainer";
 
-export const CourseContainer = memo(props => {
+export const CourseSingleContainer = memo(props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const [isLoading, setLoadingState] = useState(true);
   const [courseInfo, setCourseInfo] = useState(null);
