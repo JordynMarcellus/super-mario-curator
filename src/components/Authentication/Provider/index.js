@@ -41,11 +41,24 @@ const AuthorizationProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribeFromFirebaseObservable = firebaseService
       .auth()
-      .onAuthStateChanged(user => {
+      .onAuthStateChanged(async user => {
         if (user) {
           const { email, displayName, uid } = user;
+
+          const userDbObject = await firestoreDB
+            .collection("users")
+            .doc(uid)
+            .get()
+            .then(ref => {
+              const refData = ref.data();
+              return refData;
+            });
+
           setUser({
             userInfo: { email, displayName, uid },
+            userContent: {
+              ...userDbObject,
+            },
             isLoggedIn: true,
           });
           return false;
@@ -54,7 +67,7 @@ const AuthorizationProvider = ({ children }) => {
         return false;
       });
     return () => unsubscribeFromFirebaseObservable();
-  }, [firebaseService]);
+  }, [firebaseService, firestoreDB]);
 
   return (
     <AuthorizationContext.Provider
