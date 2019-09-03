@@ -26,11 +26,7 @@ export const UserContainer = props => {
   }, [firestoreDB, props.match.params.userId]);
   return (
     <Layout justify="center" align="center">
-      {isLoading && (
-        <Box width="small">
-          <Spinner />
-        </Box>
-      )}
+      {isLoading && <Spinner />}
       {!isLoading && (
         <Box width="large">
           <Heading level="2">Hi {user.userInfo.displayName}!</Heading>

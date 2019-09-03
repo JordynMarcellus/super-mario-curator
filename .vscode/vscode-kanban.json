@@ -28,6 +28,20 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
+      "creation_time": "2019-08-29T16:58:42.491Z",
+      "description": {
+        "content": "Need to display UI elements related to user's added courses and playlists. ",
+        "mime": "text/markdown"
+      },
+      "id": "15",
+      "prio": 3,
+      "references": [],
+      "title": "READ user 2.0"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
       "creation_time": "2019-08-26T17:38:38.747Z",
       "description": {
         "content": "- Form (Y)\n- Submit to Firebase (check)\n- Will add a createdBy with the firebaes UID ",
@@ -107,15 +121,15 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-08-29T16:58:42.491Z",
+      "creation_time": "2019-08-26T17:39:40.916Z",
       "description": {
-        "content": "Need to display UI elements related to user's added courses and playlists. ",
+        "content": "- Needs to be auth/user aware!!!",
         "mime": "text/markdown"
       },
-      "id": "15",
-      "prio": 3,
+      "id": "9",
+      "prio": 1,
       "references": [],
-      "title": "READ user 2.0"
+      "title": "UPDATE playlists"
     }
   ],
   "testing": [],
@@ -166,20 +180,6 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-08-26T17:39:40.916Z",
-      "description": {
-        "content": "- Needs to be auth/user aware!!!",
-        "mime": "text/markdown"
-      },
-      "id": "9",
-      "prio": 1,
-      "references": [],
-      "title": "UPDATE playlists"
-    },
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
       "creation_time": "2019-07-29T21:06:05.727Z",
       "description": {
         "content": "Shd be so easy to test this myself XD",
@@ -193,6 +193,15 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
+      "creation_time": "2019-08-30T18:36:30.427Z",
+      "id": "17",
+      "references": [],
+      "title": "DELETE course"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
       "creation_time": "2019-07-29T20:59:58.887Z",
       "description": {
         "content": "A maker's list of courses",
@@ -201,6 +210,15 @@
       "id": "1",
       "references": [],
       "title": "TODO: '/maker/{makerID}/course/{courseID}"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2019-08-30T18:36:23.051Z",
+      "id": "16",
+      "references": [],
+      "title": "UPDATE course"
     }
   ]
 }

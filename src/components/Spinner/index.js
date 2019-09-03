@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { Box } from 'grommet'
 import { keyframes } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -30,7 +31,8 @@ const Ring = styled.path(props => ({
 }));
 
 export const Spinner = memo(() => (
-  <LoadingIcon
+  <Box width="small">
+      <LoadingIcon
     role="img"
     aria-label="An upside down face icon to indicate content is loading">
     <svg version="1.1" x="0px" y="0px" viewBox="0 0 80 80">
@@ -46,4 +48,5 @@ export const Spinner = memo(() => (
       />
     </svg>
   </LoadingIcon>
+  </Box>
 ));
