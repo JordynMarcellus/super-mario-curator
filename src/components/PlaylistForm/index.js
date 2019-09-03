@@ -34,32 +34,34 @@ export const PlaylistForm = props => {
       <Form
         onSubmit={event => {
           event.preventDefault();
+          console.log(playlistData);
           props.submitFormData({ playlistData, courses });
         }}>
         <Box margin={{ bottom: "large" }}>
-          <FormField
-            name="playlistName"
-            label="Name"
-            id="playlist-name"
-            required
-            onClick={e =>
-              setPlaylistData({ ...playlistData, playlistName: e.target.value })
-            }
-            value={playlistData.playlistName}
-          />
-          <FormField
-            name="playlistDescription"
-            component={TextArea}
-            label="Description (optional)"
-            size="medium"
-            onClick={e =>
-              setPlaylistData({
-                ...playlistData,
-                playlistDescription: e.target.value,
-              })
-            }
-            value={playlistData.playlistDescription}
-          />
+          <FormField label="Name" required>
+            <TextInput
+              onChange={e =>
+                setPlaylistData({
+                  ...playlistData,
+                  playlistName: e.target.value,
+                })
+              }
+              value={playlistData.playlistName}
+            />
+          </FormField>
+          <FormField>
+            <TextArea
+              label="Description (optional)"
+              size="medium"
+              onChange={e =>
+                setPlaylistData({
+                  ...playlistData,
+                  playlistDescription: e.target.value,
+                })
+              }
+              value={playlistData.playlistDescription}
+            />
+          </FormField>
         </Box>
         <Box overflow="auto">
           {courses.map((course, index) => (
@@ -109,7 +111,7 @@ export const PlaylistForm = props => {
   );
 };
 
-PlaylistForm.defaltProps = {
+PlaylistForm.defaultProps = {
   initialFormStateData: DEFAULT_PLAYLIST_ADD_DATA_STATE,
   initialFormStateCourses: ADD_PLAYLIST_FORM_COURSE_STATE,
 };

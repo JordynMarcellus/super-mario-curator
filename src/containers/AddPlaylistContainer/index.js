@@ -6,13 +6,6 @@ import { FirebaseContext } from "../../components/Firebase";
 import { PlaylistForm } from "../../components/PlaylistForm";
 import { ToggleForm } from "../../components/ToggleForm";
 
-const DEFAULT_PLAYLIST_ADD_STATE = {
-  name: "",
-  id: "",
-};
-
-const ADD_PLAYLIST_FORM_STATE = [DEFAULT_PLAYLIST_ADD_STATE];
-
 export const AddPlaylistContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
   const { user } = useContext(AuthenticationContext);

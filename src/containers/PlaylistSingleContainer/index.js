@@ -27,7 +27,6 @@ export const PlaylistSingleContainer = props => {
       })
       .catch(e => console.error(e));
   }, [playlistId, firestoreDB]);
-  console.log(playlistInfo);
   return (
     <Layout>
       <Box>
@@ -45,9 +44,7 @@ export const PlaylistSingleContainer = props => {
               user.userInfo.uid === playlistInfo.addedBy.uid && (
                 <Button icon={<Edit />} label="Edit playlist" />
               )}
-            <ToggleForm
-              headline="Add new playlist"
-              toggleVisibility={() => true}>
+            <ToggleForm headline="Edit playlist" toggleVisibility={() => true}>
               <PlaylistForm
                 initialFormStateData={playlistInfo.playlistData}
                 initialFormStateCourses={playlistInfo.courses}
