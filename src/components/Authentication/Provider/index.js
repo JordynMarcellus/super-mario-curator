@@ -5,6 +5,7 @@ import AuthorizationContext from "../Context";
 const AuthorizationProvider = ({ children }) => {
   const [user, setUser] = useState({
     userInfo: null,
+    userContent: null,
     isLoggedIn: false,
   });
 
@@ -38,6 +39,8 @@ const AuthorizationProvider = ({ children }) => {
     }
   };
 
+  // TODO: simplify this hook
+
   useEffect(() => {
     const unsubscribeFromFirebaseObservable = firebaseService
       .auth()
@@ -63,7 +66,6 @@ const AuthorizationProvider = ({ children }) => {
           });
           return false;
         }
-        setUser({ user: null, isLoggedIn: false });
         return false;
       });
     return () => unsubscribeFromFirebaseObservable();
