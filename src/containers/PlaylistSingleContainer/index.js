@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box } from "grommet";
+import { Box, Button } from "grommet";
+import { Edit } from "grommet-icons";
 import { Layout } from "../../components/Layout";
+import { AuthenticationContext } from "../../components/Authentication";
 import { FirebaseContext } from "../../components/Firebase";
 import { PlaylistSinglePage } from "../../components/PlaylistSinglePage";
 
 export const PlaylistSingleContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
+  const { user } = useContext(AuthenticationContext);
   const [isLoading, setLoadingState] = useState(true);
   const [playlistInfo, setPlaylistInfo] = useState(null);
   const { playlistId } = props.match.params;
@@ -26,12 +29,20 @@ export const PlaylistSingleContainer = props => {
     <Layout>
       <Box>
         {isLoading && <div>Loading...</div>}
-        {playlistInfo && (
-          <PlaylistSinglePage
-            playlistName={playlistInfo.playlistData.playlistName}
-            playlistDescription={playlistInfo.playlistData.playlistDescription}
-            playlistCourses={playlistInfo.courses}
-          />
+        {!isLoading && (
+          <>
+            <PlaylistSinglePage
+              playlistName={playlistInfo.playlistData.playlistName}
+              playlistDescription={
+                playlistInfo.playlistData.playlistDescription
+              }
+              playlistCourses={playlistInfo.courses}
+            />
+            {user.isLoggedIn &&
+              user.userInfo.uid === playlistInfo.addedBy.uid && (
+                <Button icon={<Edit />} label="Edit playlist" />
+              )}
+          </>
         )}
       </Box>
     </Layout>

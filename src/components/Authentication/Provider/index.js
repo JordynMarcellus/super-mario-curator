@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../../Firebase";
 import AuthorizationContext from "../Context";
 
+const INITIAL_STATE = {
+  userInfo: null,
+  userContent: null,
+  isLoggedIn: false,
+};
+
 const AuthorizationProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    userInfo: null,
-    userContent: null,
-    isLoggedIn: false,
-  });
+  const [user, setUser] = useState({});
 
   const { firebaseService, firestoreDB } = useContext(FirebaseContext);
 
@@ -29,7 +31,6 @@ const AuthorizationProvider = ({ children }) => {
       await userReference.user.updateProfile({
         displayName,
       });
-
       await firestoreDB
         .collection("users")
         .doc(userReference.user.uid)
@@ -66,6 +67,7 @@ const AuthorizationProvider = ({ children }) => {
           });
           return false;
         }
+        setUser(INITIAL_STATE);
         return false;
       });
     return () => unsubscribeFromFirebaseObservable();

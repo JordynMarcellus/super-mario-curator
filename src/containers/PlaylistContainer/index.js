@@ -27,7 +27,6 @@ export const PlaylistContainer = props => {
         {isLoading && <div>Loading...</div>}
         {playlists.length !== 0 &&
           playlists.map(playlistItem => {
-            console.log(playlistItem);
             return (
               <Card
                 key={playlistItem.uid}
