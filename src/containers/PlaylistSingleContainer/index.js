@@ -5,6 +5,8 @@ import { Layout } from "../../components/Layout";
 import { AuthenticationContext } from "../../components/Authentication";
 import { FirebaseContext } from "../../components/Firebase";
 import { PlaylistSinglePage } from "../../components/PlaylistSinglePage";
+import { PlaylistForm } from "../../components/PlaylistForm";
+import { ToggleForm } from "../../components/ToggleForm";
 
 export const PlaylistSingleContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
@@ -25,6 +27,7 @@ export const PlaylistSingleContainer = props => {
       })
       .catch(e => console.error(e));
   }, [playlistId, firestoreDB]);
+  console.log(playlistInfo);
   return (
     <Layout>
       <Box>
@@ -42,6 +45,15 @@ export const PlaylistSingleContainer = props => {
               user.userInfo.uid === playlistInfo.addedBy.uid && (
                 <Button icon={<Edit />} label="Edit playlist" />
               )}
+            <ToggleForm
+              headline="Add new playlist"
+              toggleVisibility={() => true}>
+              <PlaylistForm
+                initialFormStateData={playlistInfo.playlistData}
+                initialFormStateCourses={playlistInfo.courses}
+                submitFormData={console.log}
+              />
+            </ToggleForm>
           </>
         )}
       </Box>

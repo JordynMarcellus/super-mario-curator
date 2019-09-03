@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { Box, Button, Form, FormField, TextArea, TextInput } from "grommet";
 import { FormAdd } from "grommet-icons";
-const DEFAULT_PLAYLIST_ADD_STATE = {
+
+// will need to use responsiveContext from Grommet here to modify layout variables!
+// responsive grid will be a good ex here https://storybook.grommet.io/?path=/story/responsivecontext--responsive-grid
+
+const DEFAULT_PLAYLIST_ADD_COURSE_STATE = {
   name: "",
   id: "",
 };
 
-// will need to use responsiveContext from Grommet here to modify layout variables!
-// responsive grid will be a good ex here https://storybook.grommet.io/?path=/story/responsivecontext--responsive-grid
+const DEFAULT_PLAYLIST_ADD_DATA_STATE = {
+  playlistName: "",
+  playlistDescription: "",
+};
+
+const ADD_PLAYLIST_FORM_COURSE_STATE = [DEFAULT_PLAYLIST_ADD_COURSE_STATE];
 
 const setCoursesAtIndex = (event, index, arrayToCopy = [], callback) => {
   const immutableCourseArray = [...arrayToCopy];
@@ -19,13 +27,12 @@ const setCoursesAtIndex = (event, index, arrayToCopy = [], callback) => {
 };
 
 export const PlaylistForm = props => {
-  const [courses, setCourses] = useState([DEFAULT_PLAYLIST_ADD_STATE]);
-
+  const [courses, setCourses] = useState(props.initialFormStateCourses);
+  const [playlistData, setPlaylistData] = useState(props.initialFormStateData);
   return (
     <Box overflow="auto">
       <Form
         onSubmit={event => {
-          const { value: playlistData } = event;
           event.preventDefault();
           props.submitFormData({ playlistData, courses });
         }}>
@@ -35,12 +42,23 @@ export const PlaylistForm = props => {
             label="Name"
             id="playlist-name"
             required
+            onClick={e =>
+              setPlaylistData({ ...playlistData, playlistName: e.target.value })
+            }
+            value={playlistData.playlistName}
           />
           <FormField
             name="playlistDescription"
             component={TextArea}
             label="Description (optional)"
             size="medium"
+            onClick={e =>
+              setPlaylistData({
+                ...playlistData,
+                playlistDescription: e.target.value,
+              })
+            }
+            value={playlistData.playlistDescription}
           />
         </Box>
         <Box overflow="auto">
@@ -80,11 +98,18 @@ export const PlaylistForm = props => {
           <Button
             icon={<FormAdd />}
             label="Add course"
-            onClick={e => setCourses([...courses, DEFAULT_PLAYLIST_ADD_STATE])}
+            onClick={e =>
+              setCourses([...courses, DEFAULT_PLAYLIST_ADD_COURSE_STATE])
+            }
           />
           <Button primary label="Submit playlist" type="submit" />
         </Box>
       </Form>
     </Box>
   );
+};
+
+PlaylistForm.defaltProps = {
+  initialFormStateData: DEFAULT_PLAYLIST_ADD_DATA_STATE,
+  initialFormStateCourses: ADD_PLAYLIST_FORM_COURSE_STATE,
 };
