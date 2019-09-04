@@ -137,9 +137,7 @@
       "id": "18",
       "references": [],
       "title": "DESIGN -- make cards suck less"
-    }
-  ],
-  "in-progress": [
+    },
     {
       "assignedTo": {
         "name": "Jordyn Marcellus"
@@ -148,6 +146,17 @@
       "id": "19",
       "references": [],
       "title": "Loading states for all contaiiners"
+    }
+  ],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2019-09-04T13:43:48.200Z",
+      "id": "20",
+      "references": [],
+      "title": "HomeContainer moves from Courses to Home"
     }
   ],
   "testing": [],
@@ -215,15 +224,6 @@
       "id": "17",
       "references": [],
       "title": "DELETE course"
-    },
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
-      "creation_time": "2019-09-04T13:43:48.200Z",
-      "id": "20",
-      "references": [],
-      "title": "HomeContainer moves from Courses to Home"
     },
     {
       "assignedTo": {

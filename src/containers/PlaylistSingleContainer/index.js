@@ -11,7 +11,6 @@ import { ToggleForm } from "../../components/ToggleForm";
 
 export const PlaylistSingleContainer = props => {
   const {
-    firestoreDB,
     editPlaylistInFirestore,
     getPlaylistSingleFromFirestore,
   } = useContext(FirebaseContext);
@@ -20,7 +19,6 @@ export const PlaylistSingleContainer = props => {
   const [playlistInfo, setPlaylistInfo] = useState(null);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const { playlistId } = props.match.params;
-  const firestoreRef = firestoreDB.collection("playlists").doc(playlistId);
   const togglePlaylistEditForm = () => setIsEditFormVisible(!isEditFormVisible);
   const onFormSubmit = data => {
     editPlaylistInFirestore(playlistId, data).then(() => console.log("hey"));
