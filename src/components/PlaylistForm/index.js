@@ -34,7 +34,6 @@ export const PlaylistForm = props => {
       <Form
         onSubmit={event => {
           event.preventDefault();
-          console.log(playlistData);
           props.submitFormData({ playlistData, courses });
         }}>
         <Box margin={{ bottom: "large" }}>

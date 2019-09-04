@@ -28,7 +28,6 @@ const addCourseToFirestore = (
     })
     .then(() => {
       // document successfully submitted
-      console.log("submitted!");
     })
     .catch(e => console.error(e));
 };

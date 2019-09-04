@@ -13,7 +13,9 @@ export const PlaylistSingleContainer = props => {
   const { user } = useContext(AuthenticationContext);
   const [isLoading, setLoadingState] = useState(true);
   const [playlistInfo, setPlaylistInfo] = useState(null);
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const { playlistId } = props.match.params;
+  const togglePlaylistEditForm = () => setIsEditFormVisible(!isEditFormVisible);
 
   useEffect(() => {
     firestoreDB
@@ -42,9 +44,16 @@ export const PlaylistSingleContainer = props => {
             />
             {user.isLoggedIn &&
               user.userInfo.uid === playlistInfo.addedBy.uid && (
-                <Button icon={<Edit />} label="Edit playlist" />
+                <Button
+                  icon={<Edit />}
+                  onClick={togglePlaylistEditForm}
+                  label="Edit playlist"
+                />
               )}
-            <ToggleForm headline="Edit playlist" toggleVisibility={() => true}>
+            <ToggleForm
+              headline="Edit playlist"
+              toggleVisibility={togglePlaylistEditForm}
+              isVisible={isEditFormVisible}>
               <PlaylistForm
                 initialFormStateData={playlistInfo.playlistData}
                 initialFormStateCourses={playlistInfo.courses}
