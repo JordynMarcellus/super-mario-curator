@@ -6,6 +6,7 @@ import { AuthenticationContext } from "../../components/Authentication";
 import { FirebaseContext } from "../../components/Firebase";
 import { PlaylistSinglePage } from "../../components/PlaylistSinglePage";
 import { PlaylistForm } from "../../components/PlaylistForm";
+import { Spinner } from "../../components/Spinner";
 import { ToggleForm } from "../../components/ToggleForm";
 
 export const PlaylistSingleContainer = props => {
@@ -39,7 +40,7 @@ export const PlaylistSingleContainer = props => {
   return (
     <Layout>
       <Box>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Spinner />}
         {!isLoading && (
           <>
             <PlaylistSinglePage

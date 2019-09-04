@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Paragraph, Text } from "grommet";
+import { Box, Text } from "grommet";
 import { Layout } from "../../components/Layout";
 import { Card } from "../../components/Card";
 import { CardWrapper } from "../../components/CardWrapper";
 import { FirebaseContext } from "../../components/Firebase";
+import { Spinner } from "../../components/Spinner";
 import { AddPlaylistContainer } from "../AddPlaylistContainer";
 export const PlaylistContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
@@ -25,7 +26,7 @@ export const PlaylistContainer = props => {
   return (
     <Layout>
       <Box margin={{ vertical: "medium" }} flex="grow">
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Spinner />}
         {playlists.length !== 0 && (
           <CardWrapper>
             {playlists.map(playlistItem => {

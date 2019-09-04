@@ -25,7 +25,7 @@ export const UserContainer = props => {
       .catch(e => console.error(e));
   }, [firestoreDB, props.match.params.userId]);
   return (
-    <Layout justify="center" align="center">
+    <Layout>
       {isLoading && <Spinner />}
       {!isLoading && (
         <Box width="large">

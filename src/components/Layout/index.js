@@ -9,6 +9,8 @@ export const Layout = memo(props => {
       <Box
         as="main"
         pad={{ vertical: "large", horizontal: "xlarge" }}
+        justify="center"
+        align="center"
         {...props}>
         {props.children}
       </Box>

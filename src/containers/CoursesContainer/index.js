@@ -3,6 +3,7 @@ import { Box, Heading, Text } from "grommet";
 import { Card } from "../../components/Card";
 import { CardWrapper } from "../../components/CardWrapper";
 import { FirebaseContext } from "../../components/Firebase";
+import { Spinner } from "../../components/Spinner";
 import { AddCourseContainer } from "../AddCourseContainer";
 
 export const CoursesContainer = props => {
@@ -25,9 +26,8 @@ export const CoursesContainer = props => {
     <Box pad="small">
       <Heading level="2">Newest courses:</Heading>
       <Box margin="medium" flex="grow">
-        {isLoading ? (
-          <div>loading...</div>
-        ) : (
+        {isLoading && <Spinner />}
+        {courses.length !== 0 && (
           <CardWrapper>
             {courses.map(course => (
               <Card

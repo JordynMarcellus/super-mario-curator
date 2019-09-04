@@ -2,6 +2,7 @@ import React, { memo, useContext, useEffect, useState } from "react";
 import { Box, Heading, Text } from "grommet";
 import { Layout } from "../../components/Layout";
 import { FirebaseContext } from "../../components/Firebase";
+import { Spinner } from "../../components/Spinner";
 import { CourseNotFoundContainer } from "../../containers/CourseNotFoundContainer";
 
 export const CourseSingleContainer = memo(props => {
@@ -27,7 +28,7 @@ export const CourseSingleContainer = memo(props => {
         <Heading level="2">
           Course information for... {props.match.params.courseId}
         </Heading>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Spinner />}
         {courseInfo === null && isLoading === false && (
           <CourseNotFoundContainer courseId={props.match.params.courseId} />
         )}
