@@ -8,8 +8,6 @@ export const Card = props => (
       {props.title}
     </Heading>
     {props.description}
-    <StyledLink marginTop="auto" to={props.linkTo}>
-      See playlist
-    </StyledLink>
+    <StyledLink to={props.linkTo}>See playlist</StyledLink>
   </Box>
 );
