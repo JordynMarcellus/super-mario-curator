@@ -39,13 +39,12 @@ export const AddPlaylistContainer = props => {
         label="New playlist"
         onClick={togglePlaylistAddForm}
       />
-      {isAddingNewPlaylist && (
-        <ToggleForm
-          headline="Add new playlist"
-          toggleVisibility={togglePlaylistAddForm}>
-          <PlaylistForm submitFormData={onFormSubmit} />
-        </ToggleForm>
-      )}
+      <ToggleForm
+        isVisible={isAddingNewPlaylist}
+        headline="Add new playlist"
+        toggleVisibility={togglePlaylistAddForm}>
+        <PlaylistForm submitFormData={onFormSubmit} />
+      </ToggleForm>
     </Box>
   );
 };

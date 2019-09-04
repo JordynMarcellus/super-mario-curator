@@ -7,6 +7,7 @@ import { CourseForm } from "../../components/CourseForm";
 export const AddCourseContainer = props => {
   const [isAddingNewCourse, setIsAddingNewCourse] = useState(false);
   const toggleCourseAddForm = () => setIsAddingNewCourse(!isAddingNewCourse);
+
   return (
     <Box>
       <Button
@@ -15,14 +16,14 @@ export const AddCourseContainer = props => {
         label="New course"
         onClick={toggleCourseAddForm}
       />
-      {isAddingNewCourse && (
-        <ToggleForm toggleVisibility={toggleCourseAddForm}>
-          <CourseForm
-            headline="Add new course"
-            onSubmitSuccess={toggleCourseAddForm}
-          />
-        </ToggleForm>
-      )}
+      <ToggleForm
+        isVisible={isAddingNewCourse}
+        toggleVisibility={toggleCourseAddForm}>
+        <CourseForm
+          headline="Add new course"
+          onSubmitSuccess={toggleCourseAddForm}
+        />
+      </ToggleForm>
     </Box>
   );
 };

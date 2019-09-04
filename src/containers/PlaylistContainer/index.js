@@ -28,7 +28,7 @@ export const PlaylistContainer = props => {
         {playlists.length !== 0 && (
           <Box
             direction="row"
-            wrap="true"
+            wrap={true}
             margin={{ vertical: "medium", horizontal: "0" }}>
             {playlists.map(playlistItem => {
               return (
