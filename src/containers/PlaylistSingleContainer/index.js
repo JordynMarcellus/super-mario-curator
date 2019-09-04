@@ -10,9 +10,11 @@ import { Spinner } from "../../components/Spinner";
 import { ToggleForm } from "../../components/ToggleForm";
 
 export const PlaylistSingleContainer = props => {
-  const { firestoreDB, getPlaylistSingleFromFirestore } = useContext(
-    FirebaseContext
-  );
+  const {
+    firestoreDB,
+    editPlaylistInFirestore,
+    getPlaylistSingleFromFirestore,
+  } = useContext(FirebaseContext);
   const { user } = useContext(AuthenticationContext);
   const [isLoading, setLoadingState] = useState(true);
   const [playlistInfo, setPlaylistInfo] = useState(null);
@@ -21,13 +23,7 @@ export const PlaylistSingleContainer = props => {
   const firestoreRef = firestoreDB.collection("playlists").doc(playlistId);
   const togglePlaylistEditForm = () => setIsEditFormVisible(!isEditFormVisible);
   const onFormSubmit = data => {
-    const { playlistData, courses } = data;
-    firestoreRef
-      .update({
-        courses,
-        playlistData,
-      })
-      .then(() => console.log("hey"));
+    editPlaylistInFirestore(playlistId, data).then(() => console.log("hey"));
   };
   useEffect(() => {
     getPlaylistSingleFromFirestore(playlistId)
@@ -37,7 +33,7 @@ export const PlaylistSingleContainer = props => {
         setLoadingState(false);
       })
       .catch(e => console.error(e));
-  }, [playlistId, getPlaylistSingleFromFirestore]);
+  }, [playlistId, editPlaylistInFirestore, getPlaylistSingleFromFirestore]);
   return (
     <Layout>
       <Box>

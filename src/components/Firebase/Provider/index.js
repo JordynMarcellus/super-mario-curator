@@ -7,16 +7,22 @@ const FirebaseProvider = ({ children }) => {
   // const addPlaylistToFirebase = () => {
   //   firestoreDB.
   // }
-  // const editPlaylistInFirestore = async playlistId
+  const editPlaylistInFirestore = async (playlistId, data) => {
+    await firestorePlaylistRef.doc(playlistId).update(data);
+  };
   const getPlaylistSingleFromFirestore = async playlistId => {
     const data = await firestorePlaylistRef.doc(playlistId).get();
-    console.log(data);
     return data;
   };
   // const addCourseToFirebase =
   return (
     <FirebaseContext.Provider
-      value={{ firebaseService, firestoreDB, getPlaylistSingleFromFirestore }}>
+      value={{
+        firebaseService,
+        firestoreDB,
+        editPlaylistInFirestore,
+        getPlaylistSingleFromFirestore,
+      }}>
       {children}
     </FirebaseContext.Provider>
   );
