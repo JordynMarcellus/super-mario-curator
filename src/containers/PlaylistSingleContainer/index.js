@@ -18,14 +18,13 @@ export const PlaylistSingleContainer = props => {
   const firestoreRef = firestoreDB.collection("playlists").doc(playlistId);
   const togglePlaylistEditForm = () => setIsEditFormVisible(!isEditFormVisible);
   const onFormSubmit = data => {
-    console.log(data);
     const { playlistData, courses } = data;
     firestoreRef
       .update({
         courses,
         playlistData,
       })
-      .then(docSnap => console.log(docSnap));
+      .then(() => console.log("hey"));
   };
   useEffect(() => {
     firestoreRef

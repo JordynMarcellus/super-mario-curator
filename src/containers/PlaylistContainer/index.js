@@ -23,29 +23,35 @@ export const PlaylistContainer = props => {
 
   return (
     <Layout>
-      <Box margin={{ vertical: "medium" }}>
+      <Box margin={{ vertical: "medium" }} flex="grow">
         {isLoading && <div>Loading...</div>}
-        {playlists.length !== 0 &&
-          playlists.map(playlistItem => {
-            return (
-              <Card
-                key={playlistItem.uid}
-                title={playlistItem.playlistData.playlistName}
-                description={
-                  <>
-                    <Paragraph margin={{ top: "0", bottom: "small" }}>
-                      {playlistItem.playlistData.playlistDescription}
-                    </Paragraph>
-                    <Text margin={{ bottom: "small" }}>
-                      Total courses: {playlistItem.courses.length}
-                    </Text>
-                  </>
-                }
-                linkTo={`/playlists/${playlistItem.uid}`}
-                playlist={playlistItem}
-              />
-            );
-          })}
+        {playlists.length !== 0 && (
+          <Box
+            direction="row"
+            wrap="true"
+            margin={{ vertical: "medium", horizontal: "0" }}>
+            {playlists.map(playlistItem => {
+              return (
+                <Card
+                  key={playlistItem.uid}
+                  title={playlistItem.playlistData.playlistName}
+                  description={
+                    <>
+                      <Paragraph margin={{ top: "0", bottom: "small" }}>
+                        {playlistItem.playlistData.playlistDescription}
+                      </Paragraph>
+                      <Text margin={{ bottom: "small" }}>
+                        Total courses: {playlistItem.courses.length}
+                      </Text>
+                    </>
+                  }
+                  linkTo={`/playlists/${playlistItem.uid}`}
+                  playlist={playlistItem}
+                />
+              );
+            })}
+          </Box>
+        )}
         <AddPlaylistContainer />
       </Box>
     </Layout>

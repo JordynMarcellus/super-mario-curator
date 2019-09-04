@@ -80,6 +80,20 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
+      "creation_time": "2019-08-26T17:39:40.916Z",
+      "description": {
+        "content": "- Needs to be auth/user aware!!!",
+        "mime": "text/markdown"
+      },
+      "id": "9",
+      "prio": 1,
+      "references": [],
+      "title": "UPDATE playlists"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
       "creation_time": "2019-07-29T23:15:07.554Z",
       "description": {
         "content": "Super Mario Bros.\nSuper Mario Bros. 3\nSuper Mario World\nNew Super Mario Bros. U\nSuper Mario 3D World",
@@ -121,15 +135,10 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-08-26T17:39:40.916Z",
-      "description": {
-        "content": "- Needs to be auth/user aware!!!",
-        "mime": "text/markdown"
-      },
-      "id": "9",
-      "prio": 1,
+      "creation_time": "2019-09-04T13:40:08.696Z",
+      "id": "18",
       "references": [],
-      "title": "UPDATE playlists"
+      "title": "DESIGN -- make cards suck less"
     }
   ],
   "testing": [],
@@ -202,14 +211,10 @@
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2019-07-29T20:59:58.887Z",
-      "description": {
-        "content": "A maker's list of courses",
-        "mime": "text/markdown"
-      },
-      "id": "1",
+      "creation_time": "2019-09-04T13:40:52.101Z",
+      "id": "19",
       "references": [],
-      "title": "TODO: '/maker/{makerID}/course/{courseID}"
+      "title": "Loading states for all contaiiners"
     },
     {
       "assignedTo": {
@@ -219,6 +224,15 @@
       "id": "16",
       "references": [],
       "title": "UPDATE course"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2019-09-04T13:43:48.200Z",
+      "id": "20",
+      "references": [],
+      "title": "HomeContainer moves from Courses to Home"
     }
   ]
 }
