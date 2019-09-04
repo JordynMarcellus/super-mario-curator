@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Box, Paragraph, Text } from "grommet";
 import { Layout } from "../../components/Layout";
 import { Card } from "../../components/Card";
+import { CardWrapper } from "../../components/CardWrapper";
 import { FirebaseContext } from "../../components/Firebase";
 import { AddPlaylistContainer } from "../AddPlaylistContainer";
 export const PlaylistContainer = props => {
@@ -26,10 +27,7 @@ export const PlaylistContainer = props => {
       <Box margin={{ vertical: "medium" }} flex="grow">
         {isLoading && <div>Loading...</div>}
         {playlists.length !== 0 && (
-          <Box
-            direction="row"
-            wrap={true}
-            margin={{ vertical: "medium", horizontal: "0" }}>
+          <CardWrapper>
             {playlists.map(playlistItem => {
               return (
                 <Card
@@ -37,20 +35,19 @@ export const PlaylistContainer = props => {
                   title={playlistItem.playlistData.playlistName}
                   description={
                     <>
-                      <Paragraph margin={{ top: "0", bottom: "small" }}>
+                      <Text margin={{ top: "0", bottom: "small" }}>
                         {playlistItem.playlistData.playlistDescription}
-                      </Paragraph>
+                      </Text>
                       <Text margin={{ bottom: "small" }}>
                         Total courses: {playlistItem.courses.length}
                       </Text>
                     </>
                   }
                   linkTo={`/playlists/${playlistItem.uid}`}
-                  playlist={playlistItem}
                 />
               );
             })}
-          </Box>
+          </CardWrapper>
         )}
         <AddPlaylistContainer />
       </Box>

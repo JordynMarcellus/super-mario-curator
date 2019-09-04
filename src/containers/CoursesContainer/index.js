@@ -1,22 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Heading, TableCell, TableRow } from "grommet";
-import { Link } from "react-router-dom";
-import { SearchTable } from "../../components/SearchTable";
+import { Box, Heading, Text } from "grommet";
+import { Card } from "../../components/Card";
+import { CardWrapper } from "../../components/CardWrapper";
 import { FirebaseContext } from "../../components/Firebase";
 import { AddCourseContainer } from "../AddCourseContainer";
-const TABLE_HEADERS = ["Course name", "CourseId", "MakerId"];
-
-const buildCourseTableCells = courses => {
-  return courses.map(course => (
-    <TableRow key={course.courseId}>
-      <TableCell>
-        <Link to={`/courses/${course.courseId}`}>{course.courseName}</Link>
-      </TableCell>
-      <TableCell>{course.courseId}</TableCell>
-      <TableCell>{course.makerId}</TableCell>
-    </TableRow>
-  ));
-};
 
 export const CoursesContainer = props => {
   const { firestoreDB } = useContext(FirebaseContext);
@@ -36,15 +23,21 @@ export const CoursesContainer = props => {
 
   return (
     <Box pad="small">
-      <Heading level="2">Random courses:</Heading>
-      <Box margin="medium">
+      <Heading level="2">Newest courses:</Heading>
+      <Box margin="medium" flex="grow">
         {isLoading ? (
           <div>loading...</div>
         ) : (
-          <SearchTable
-            cells={buildCourseTableCells(courses)}
-            headers={TABLE_HEADERS}
-          />
+          <CardWrapper>
+            {courses.map(course => (
+              <Card
+                key={course.courseId}
+                title={course.courseName}
+                description={<Text />}
+                linkTo={`/courses/${course.courseId}`}
+              />
+            ))}
+          </CardWrapper>
         )}
       </Box>
       <AddCourseContainer />
