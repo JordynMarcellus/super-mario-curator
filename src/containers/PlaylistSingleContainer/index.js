@@ -15,12 +15,20 @@ export const PlaylistSingleContainer = props => {
   const [playlistInfo, setPlaylistInfo] = useState(null);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const { playlistId } = props.match.params;
+  const firestoreRef = firestoreDB.collection("playlists").doc(playlistId);
   const togglePlaylistEditForm = () => setIsEditFormVisible(!isEditFormVisible);
-
+  const onFormSubmit = data => {
+    console.log(data);
+    const { playlistData, courses } = data;
+    firestoreRef
+      .update({
+        courses,
+        playlistData,
+      })
+      .then(docSnap => console.log(docSnap));
+  };
   useEffect(() => {
-    firestoreDB
-      .collection("playlists")
-      .doc(playlistId)
+    firestoreRef
       .get()
       .then(docSnap => {
         const playlistData = docSnap.exists ? docSnap.data() : null;
@@ -28,7 +36,7 @@ export const PlaylistSingleContainer = props => {
         setLoadingState(false);
       })
       .catch(e => console.error(e));
-  }, [playlistId, firestoreDB]);
+  }, [playlistId, firestoreDB, firestoreRef]);
   return (
     <Layout>
       <Box>
@@ -57,7 +65,7 @@ export const PlaylistSingleContainer = props => {
               <PlaylistForm
                 initialFormStateData={playlistInfo.playlistData}
                 initialFormStateCourses={playlistInfo.courses}
-                submitFormData={console.log}
+                submitFormData={onFormSubmit}
               />
             </ToggleForm>
           </>
