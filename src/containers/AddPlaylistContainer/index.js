@@ -7,7 +7,7 @@ import { PlaylistForm } from "../../components/PlaylistForm";
 import { ToggleForm } from "../../components/ToggleForm";
 
 export const AddPlaylistContainer = props => {
-  const { firestoreDB } = useContext(FirebaseContext);
+  const { addPlaylistToFirestore } = useContext(FirebaseContext);
   const { user } = useContext(AuthenticationContext);
   const [isAddingNewPlaylist, setIsAddingNewPlaylist] = useState(false);
   const togglePlaylistAddForm = () =>
@@ -16,19 +16,15 @@ export const AddPlaylistContainer = props => {
   const onFormSubmit = async formData => {
     const { uid, displayName } = user.userInfo;
     const { playlistData, courses } = formData;
-    firestoreDB
-      .collection("playlists")
-      .add({
-        playlistData,
-        courses,
-        addedBy: {
-          uid,
-          displayName,
-        },
-      })
-      .then(firestoreRef => {
-        firestoreRef.set({ uid: firestoreRef.id }, { merge: true });
-      });
+    console.log(addPlaylistToFirestore);
+    addPlaylistToFirestore({
+      playlistData,
+      courses,
+      addedBy: {
+        uid,
+        displayName,
+      },
+    }).then(() => console.log("done"));
   };
 
   return (

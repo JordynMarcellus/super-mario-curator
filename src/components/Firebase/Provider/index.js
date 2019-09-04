@@ -4,9 +4,14 @@ import FirebaseContext from "../Context";
 
 const FirebaseProvider = ({ children }) => {
   const firestorePlaylistRef = firestoreDB.collection("playlists");
-  // const addPlaylistToFirebase = () => {
-  //   firestoreDB.
-  // }
+  const addPlaylistToFirebase = async data => {
+    await firestoreDB
+      .collection("playlists")
+      .add(data)
+      .then(firestoreRef => {
+        firestoreRef.set({ uid: firestoreRef.id }, { merge: true });
+      });
+  };
   const editPlaylistInFirestore = async (playlistId, data) => {
     await firestorePlaylistRef.doc(playlistId).update(data);
   };
@@ -20,6 +25,7 @@ const FirebaseProvider = ({ children }) => {
       value={{
         firebaseService,
         firestoreDB,
+        addPlaylistToFirebase,
         editPlaylistInFirestore,
         getPlaylistSingleFromFirestore,
       }}>
