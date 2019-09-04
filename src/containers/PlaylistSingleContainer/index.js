@@ -10,7 +10,9 @@ import { Spinner } from "../../components/Spinner";
 import { ToggleForm } from "../../components/ToggleForm";
 
 export const PlaylistSingleContainer = props => {
-  const { firestoreDB } = useContext(FirebaseContext);
+  const { firestoreDB, getPlaylistSingleFromFirestore } = useContext(
+    FirebaseContext
+  );
   const { user } = useContext(AuthenticationContext);
   const [isLoading, setLoadingState] = useState(true);
   const [playlistInfo, setPlaylistInfo] = useState(null);
@@ -28,15 +30,14 @@ export const PlaylistSingleContainer = props => {
       .then(() => console.log("hey"));
   };
   useEffect(() => {
-    firestoreRef
-      .get()
+    getPlaylistSingleFromFirestore(playlistId)
       .then(docSnap => {
         const playlistData = docSnap.exists ? docSnap.data() : null;
         setPlaylistInfo(playlistData);
         setLoadingState(false);
       })
       .catch(e => console.error(e));
-  }, [playlistId, firestoreDB, firestoreRef]);
+  }, [playlistId, getPlaylistSingleFromFirestore]);
   return (
     <Layout>
       <Box>
