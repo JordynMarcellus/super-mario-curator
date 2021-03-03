@@ -7,11 +7,11 @@ const Home = () => (
       <title>Jordyn Marcellus - let's build a better future</title>
       <meta
         name="description"
-        content="Jordyn Marcellus is a humble web developer who's building a better future."></meta>
-      <link rel="canonical" href="http://example.com/" />
+        content="Jordyn Marcellus is a humble web developer building a better future."></meta>
+      <link rel="canonical" href="http://www.jordynmarcellus.com/" />
       <meta name="robots" content="index, follow" />
-
       <meta property="og:type" content="website" />
+
       <meta
         property="og:title"
         content="Jordyn Marcellus is building a better future."
@@ -24,7 +24,10 @@ const Home = () => (
       <meta property="og:url" content="https://www.jordynmarcellus.com" />
       {/* <meta property="og:site_name" content="SITE NAME" /> */}
 
-      <meta name="twitter:title" content="TITLE OF POST OR PAGE" />
+      <meta
+        name="twitter:title"
+        content="Jordyn Marcellus: building a better future."
+      />
       <meta
         name="twitter:description"
         content="Jordyn Marcellus's personal website, and the start of something good -- hopefully."
