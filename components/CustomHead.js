@@ -1,36 +1,22 @@
 import Head from "next/head";
 
-export const CustomHead = () => (
+export const CustomHead = ({ title, seoPreviewTitle, seoPreviewContent }) => (
   <Head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jordyn Marcellus - let's build a better future</title>
-    <meta
-      name="description"
-      content="Jordyn Marcellus is a humble web developer building a better future."></meta>
+    <title>{title}</title>
+    <meta name="description" content={seoPreviewContent} />
     <link rel="canonical" href="http://www.jordynmarcellus.com/" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:type" content="website" />
 
-    <meta
-      property="og:title"
-      content="Jordyn Marcellus is building a better future."
-    />
-    <meta
-      property="og:description"
-      content="Jordyn Marcellus's personal website, and the start of something good -- hopefully."
-    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seoPreviewTitle} />
+    <meta property="og:description" content={seoPreviewContent} />
     {/* <meta property="og:image" content="LINK TO THE IMAGE FILE" /> */}
     <meta property="og:url" content="https://www.jordynmarcellus.com" />
     {/* <meta property="og:site_name" content="SITE NAME" /> */}
 
-    <meta
-      name="twitter:title"
-      content="Jordyn Marcellus: building a better future."
-    />
-    <meta
-      name="twitter:description"
-      content="Jordyn Marcellus's personal website, and the start of something good -- hopefully."
-    />
+    <meta name="twitter:title" content={seoPreviewTitle} />
+    <meta name="twitter:description" content={seoPreviewContent} />
     {/* <meta name="twitter:image" content="LINK TO IMAGE" /> */}
     <meta name="twitter:site" content="@jordynmarcellus" />
 

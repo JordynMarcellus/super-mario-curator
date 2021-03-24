@@ -4,6 +4,9 @@ export const CommonLabelStyles = () => (
       label {
         display: flex;
         flex-direction: column;
+        margin-bottom: 1rem;
+      }
+      label > span {
         margin-bottom: 0.5rem;
       }
     `}
@@ -12,7 +15,7 @@ export const CommonLabelStyles = () => (
 
 export const Input = ({ type, name, required, labelText }) => (
   <label>
-    {labelText}
+    <span>{labelText}</span>
     <input {...{ type, name, required }} required />
     <CommonLabelStyles />
     <style jsx>{`

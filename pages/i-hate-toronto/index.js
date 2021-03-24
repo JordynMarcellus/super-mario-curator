@@ -1,8 +1,15 @@
 import { Layout } from "../../components/Layout";
 import { Input } from "../../components/forms/Input";
 import { TextArea } from "../../components/forms/TextArea";
+import { CustomHead } from "../../components/CustomHead";
+
 const Main = () => (
   <Layout>
+    <CustomHead
+      title="I Hate Toronto. Torontonians taking their city from the ruling class."
+      seoPreviewTitle="I Hate Toronto"
+      seoPreviewContent="Toronto is decadent depraved and we're going to shine a light on it."
+    />
     <section className="h8-center">
       <h1>Toronto is decadent and depraved.</h1>
       <p>Feel the same? Let me know.</p>
@@ -23,7 +30,7 @@ const Main = () => (
       </form>
       <p>
         FYI: we collect your information with Netlify Forms over a secure
-        connection. Be chill.
+        connection. Be chill, we have no intent to sell it.
       </p>
     </section>
     <style jsx>
