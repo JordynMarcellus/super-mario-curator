@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 import { CustomHead } from "../components/CustomHead";
 import { Layout } from "../components/Layout";
 
