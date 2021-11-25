@@ -16,35 +16,6 @@ const Main = () => (
       <p>Vacancies increase as rents rise.</p>
       <p>The greedy, tasteless ruling class has won.</p>
     </section>
-    <style jsx>
-      {`
-        button {
-          margin-bottom: 1rem;
-          padding: 1rem;
-        }
-
-        form {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-        }
-        .h8-center {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: left;
-          width: 100%;
-          padding: 1rem;
-          margin: 0 auto;
-        }
-        @media (min-width: 40rem) {
-          .h8-center {
-            width: 40rem;
-          }
-        }
-      `}
-    </style>
   </Layout>
 );
 
