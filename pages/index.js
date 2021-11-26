@@ -1,6 +1,6 @@
 import { CustomHead } from "../components/CustomHead";
 import { Layout } from "../components/Layout";
-
+import { HeroBanner } from "../components/HeroBanner";
 const Home = () => (
   <>
     <CustomHead
@@ -9,12 +9,12 @@ const Home = () => (
       seoPreviewContent="Jordyn is a web developer and propaghandist,  wielding the web to build a better future."
     />
     <Layout>
-      <section className="flex flex-col items-center justify-center h-full">
+      <HeroBanner>
         <article className="prose lg:prose-xl ">
           <h1>Hi, I'm Jordyn</h1>
           <p>Let's build a better future together.</p>
         </article>
-      </section>
+      </HeroBanner>
     </Layout>
   </>
 );
