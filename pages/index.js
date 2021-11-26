@@ -10,10 +10,10 @@ const Home = () => (
     />
     <Layout>
       <section className="flex flex-col items-center justify-center h-full">
-        <h1 className="text-4xl my-2">Hi, I'm Jordyn</h1>
-        <p className="text-2xl text-center">
-          Let's build a better future together.
-        </p>
+        <article className="prose lg:prose-xl ">
+          <h1>Hi, I'm Jordyn</h1>
+          <p>Let's build a better future together.</p>
+        </article>
       </section>
     </Layout>
   </>
