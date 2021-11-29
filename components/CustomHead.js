@@ -5,7 +5,7 @@ export const CustomHead = ({ title, seoPreviewTitle, seoPreviewContent }) => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={seoPreviewContent} />
-    <link rel="canonical" href="http://www.jordynmarcellus.com/" />
+    <link rel="canonical" href="https://www.jordynmarcellus.com/" />
     <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
