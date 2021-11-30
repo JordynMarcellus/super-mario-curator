@@ -16,6 +16,23 @@ const Main = () => (
           investing. Crashing the market is the only way to true housing
           affordability.
         </p>
+        <h2>Canaries in the coalmine</h2>
+        {/* first manual canary component */}
+        <div>
+          <h2>
+            "Realtors say they’re seeing a trend where a number of units are
+            being relisted because the seller’s original pricing strategy
+            backfired."
+          </h2>
+          <a href="https://strata.ca/blog/has-the-gta-condo-market-finally-cooled-off-depends-what-youre-looking-for">
+            Robert Van Rhijn, "Has the GTA Condo Market Finally Cooled Off?
+            Depends What You’re Looking For"
+          </a>
+          ,{" "}
+          <a href="https://strata.ca/blog/has-the-gta-condo-market-finally-cooled-off-depends-what-youre-looking-for">
+            Strata.ca
+          </a>
+        </div>
       </article>
     </HeroBanner>
   </Layout>
