@@ -1,6 +1,7 @@
 import { Layout } from "../../components/Layout";
 import { CustomHead } from "../../components/CustomHead";
 import { HeroBanner } from "../../components/HeroBanner";
+
 const Main = () => (
   <Layout>
     <CustomHead
@@ -20,7 +21,7 @@ const Main = () => (
         {/* <section className=""></section> */}
         <section>
           <h2>Canaries in the coalmine</h2>
-          <div className="w-full md:w-1/3 border-2">
+          <div className="w-full border-2">
             <h2>
               "Realtors say they’re seeing a trend where a number of units are
               being relisted because the seller’s original pricing strategy
@@ -28,9 +29,8 @@ const Main = () => (
             </h2>
             <a href="https://strata.ca/blog/has-the-gta-condo-market-finally-cooled-off-depends-what-youre-looking-for">
               Robert Van Rhijn, "Has the GTA Condo Market Finally Cooled Off?
-              Depends What You’re Looking For"
+              Depends What You’re Looking For", Strata.ca, November 2021
             </a>
-            , Strata.ca
           </div>
         </section>
       </article>
