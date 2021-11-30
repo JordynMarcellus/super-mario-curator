@@ -1,3 +1,3 @@
 export const Layout = ({ children }) => (
-  <main className="h-screen m-4">{children}</main>
+  <main className="min-h-screen overflow-auto m-4">{children}</main>
 );

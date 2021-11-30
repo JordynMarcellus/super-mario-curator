@@ -13,12 +13,48 @@ const Main = () => (
       <article className="prose lg:prose-2xl">
         <h1>Crash the market 🏠📉📉📉</h1>
         <p>
-          Canada’s ruling class is addicted to debt-driven real estate
-          investing. Crashing the market is the only way to true housing
-          affordability.
+          Toronto's ruling class is addicted to debt-driven real estate
+          investing. Covid gave them the opportunity to exploit the rest of
+          Canada like they have Toronto for centuries.
         </p>
-        {/* policy linkouts */}
-        {/* <section className=""></section> */}
+        <p>Want affordable housing? We need to crash the market.</p>
+        <section>
+          <h2>
+            The political economy of Toronto housing is
+            <em>
+              <strong> fucked</strong>
+            </em>
+          </h2>
+          <p>
+            {/* data about percentage of Cdn real estate "investors" */}
+            For decades, people across the GTA have scrimped and saved to
+            achieve house poverty. They were sold a dream: real estate only goes
+            up (never mind the crash of '89), so they can put all their money
+            into the basket that is selling their house and retiring off the
+            gains.
+          </p>
+          <p>
+            This has created an untenable polical-economic climate which
+            incentivizes Toronto homeowners to push back against any and all
+            housing that might reduce their property values one iota. Which
+            often means resisting denser housing.
+          </p>
+          <p>
+            In this climate, parasites like house flippers and wannabe slumlords
+            weasel out of the woodwork. They buy up homes, do surface
+            renovations then charge and arm and a leg for the privilege of
+            living in Toronto.
+          </p>
+          <p>
+            Choices made by every level of government -- by every political
+            party -- has got us here. Land speculation and housing exploitation
+            is built into Toronto's very DNA.
+          </p>
+          <p>
+            So, we need to crash the market. Because once the money's taken out
+            of it, we can build a better Toronto.
+          </p>
+        </section>
         <section>
           <h2>Canaries in the coalmine</h2>
           <div className="w-full border-2">
