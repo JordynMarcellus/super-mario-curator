@@ -22,8 +22,5 @@ export const CustomHead = ({ title, seoPreviewTitle, seoPreviewContent }) => (
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Karla&family=Raleway:wght@600&display=swap"
-      rel="stylesheet"></link>
   </Head>
 );
