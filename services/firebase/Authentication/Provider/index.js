@@ -22,7 +22,7 @@ const AuthorizationProvider = ({ children }) => {
   };
 
   // use auth, create user in user collection
-  const signUp = async ({ email, password, makerId, displayName }) => {
+  const signUp = async ({ email, password, displayName }) => {
     //TODO: add user accounts on successful creation, associate with displayName and MakerId
     try {
       const userReference = await firebaseService
@@ -34,14 +34,15 @@ const AuthorizationProvider = ({ children }) => {
       await firestoreDB
         .collection("users")
         .doc(userReference.user.uid)
-        .set({ playlists: [], courses: [], makerId });
+        // TODO: figure out initial data structure
+        .set({});
     } catch (e) {
       console.error(e);
     }
   };
 
   // TODO: simplify this hook
-
+  // figure out error handling
   useEffect(() => {
     const unsubscribeFromFirebaseObservable = firebaseService
       .auth()
